@@ -1,0 +1,38 @@
+.hero {
+  background: linear-gradient(106.11deg, #091a76 30.02%, #b8454d 122%);
+  position: relative;
+  height: calc(100vh - 90px);
+  /* max-height: 668px; */
+  width: 100%;
+  color: #ffffff;
+}
+
+.title {
+  position: relative;
+  margin: 0 0 6px 0;
+}
+
+.title h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 65px;
+  line-height: 70px;
+}
+
+.upcoming {
+  font-weight: 600;
+  font-size: 24px;
+  background: -webkit-linear-gradient(90.09deg, #ef1e50 17.6%, #ffa740 113.05%), #ef1e50 ;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    background: linear-gradient(106.11deg, #f8f8f8 30.02%, #222222 122%);
+    position: absolute;
+    height: calc(100vh - 50px);
+    width: 100vw;
+  }
+}

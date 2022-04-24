@@ -1,0 +1,43 @@
+.bubble1 {
+  width: min(18.6vw, 260px);
+  height: min(18.6vw, 260px);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(40%, 40%);
+  border-radius: 100%;
+  background: radial-gradient(
+        96% 96% at 70.4% 31.2%,
+        #ffe3d3 0%,
+        rgba(179, 0, 183, 0) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #4f5bd5;
+  box-shadow: 0px 0px 17.8622px rgba(255, 255, 255, 0.13),
+    53.5867px 107.173px 71.449px rgba(255, 157, 203, 0.33),
+    inset 0px 3.57245px 26.7934px rgba(255, 255, 255, 0.76),
+    inset 0px -17.8622px 44.6556px rgba(255, 255, 255, 0.53),
+    inset 8.93112px 17.8622px 89.3112px #ff8777;
+}
+
+.bubble2 {
+  width: min(13vw, 181px);
+  height: min(13vw, 181px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-30%, -30%);
+  border-radius: 100%;
+  background: radial-gradient(
+        96% 96% at 70.4% 31.2%,
+        #ffe3d3 0%,
+        rgba(179, 0, 183, 0) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #ffb037;
+  box-shadow: 0px 0px 9.47532px rgba(255, 255, 255, 0.13),
+    28.4259px 56.8519px 37.9013px rgba(255, 157, 203, 0.33),
+    inset 0px 1.89506px 14.213px rgba(255, 255, 255, 0.76),
+    inset 0px -9.47532px 23.6883px rgba(255, 255, 255, 0.53),
+    inset 4.73766px 9.47532px 47.3766px #ff8777;
+}
