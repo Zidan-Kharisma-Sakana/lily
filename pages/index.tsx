@@ -7,6 +7,7 @@ import { Hero } from "../components/Hero";
 import { SponsorPartner } from "../components/SponsorPartner";
 import { Event } from "../components/Event";
 import styles from "../styles/Home.module.css";
+import { FAQ } from "../components/FAQ";
 
 const Home: NextPage = () => {
   return (
@@ -22,14 +23,15 @@ const Home: NextPage = () => {
       <header>
         <Hero />
       </header>
-      <main className="py-11 px-28 xl:px-[121px] ">
-        <About />
-        <Banner />
-        <Event />
-        <SponsorPartner />
-      </main>
-
-      <footer className={styles.footer}></footer>
+      <div className="overflow-hidden">
+        <main className="py-8 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] xl:py-11 relative z-10">
+          <About />
+          <Banner />
+          <Event />
+          <SponsorPartner />
+        </main>
+      </div>
+      <FAQ/>
     </div>
   );
 };

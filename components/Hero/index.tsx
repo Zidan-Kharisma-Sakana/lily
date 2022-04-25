@@ -9,28 +9,32 @@ export const Hero: FC = () => {
     <div className={styles.hero}>
       <div
         id="hero-content"
-        className="flex flex-col justify-center w-full h-full pl-[123px] -translate-y-4"
+        className="flex flex-col justify-center w-full h-full px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] -translate-y-4"
       >
         <div className="flex items-center">
-          <img src="/icons/rocket.png" alt="rocket" />
+          <img
+            src="/icons/rocket.png"
+            alt="rocket"
+            className="w-6 h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 xl:w-auto xl:h-auto"
+          />
           <h3 className={styles.upcoming}>Upcoming New event 2022</h3>
         </div>
         <div className={styles.title}>
-          <div className="flex">
+          <div className="flex items-center">
             <h1>The Newest</h1>
             <img
               src="/images/leadseries_logo_putih.png"
               alt="leadseries"
-              className="-ml-2 z-50"
+              className="h-[28px] md:h-[48px] lg:h-auto lg:-ml-2 lg:z-50"
             />
           </div>
           <h1>Has Arrived!</h1>
         </div>
-          <h4 className="font-medium text-justify text-xl md:text-2xl w-1/3 md:w-2/5 xl:w-1/2 xl:min-w-[680px] leading-10">
-            A virtual event that aims to bring insights and practical knowledge
-            for youth to develop their leadership.
-          </h4>
-          <ExploreButton />
+        <h4 className="pl-1.5 mt-1 font-medium text-justify text-sm sm:text-lg md:text-xl lg:text-2xl w-3/4 sm:w-4/5 md:w-3/5 xl:w-1/2 xl:min-w-[680px] lg:leading-10">
+          A virtual event that aims to bring insights and practical knowledge
+          for youth to develop their leadership.
+        </h4>
+        <ExploreButton />
       </div>
       <Bubbles />
     </div>

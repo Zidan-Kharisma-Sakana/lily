@@ -41,3 +41,8 @@
     inset 0px -9.47532px 23.6883px rgba(255, 255, 255, 0.53),
     inset 4.73766px 9.47532px 47.3766px #ff8777;
 }
+@media (max-width: 768px) {
+  .bubble1, .bubble2 {
+    display: none;
+  }
+}

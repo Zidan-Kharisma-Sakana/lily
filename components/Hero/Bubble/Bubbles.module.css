@@ -68,8 +68,8 @@
 .bubble4 {
   position: absolute;
   left: 2%;
-  top:15%;
-  width: 4.6vw; 
+  top: 15%;
+  width: 4.6vw;
   height: 4.6vw;
   max-width: 70px;
   max-height: 70px;
@@ -108,4 +108,71 @@
     inset 0px 1.89506px 14.213px rgba(255, 255, 255, 0.76),
     inset 0px -9.47532px 23.6883px rgba(255, 255, 255, 0.53),
     inset 4.73766px 9.47532px 47.3766px #ff8777;
+}
+.bubble6 {
+  display: none;
+  position: absolute;
+  border-radius: 100%;
+  width: 156px;
+  height: 156px;
+  bottom: 0;
+  right: 0;
+  transform: translate(54px, -26px);
+  background: radial-gradient(
+        96% 96% at 70.4% 31.2%,
+        #ffe3d3 0%,
+        rgba(179, 0, 183, 0) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #c500f7;
+  box-shadow: 0px 0px 13.3741px rgba(255, 255, 255, 0.13),
+    -25.1447px 44.6447px 53.4965px rgba(255, 157, 203, 0.33),
+    inset 0px 2.67483px 20.0612px rgba(255, 255, 255, 0.76),
+    inset 0px -13.3741px 33.4353px rgba(255, 255, 255, 0.53),
+    inset 6.68707px 13.3741px 66.8707px #ff8777;
+}
+.bubble7 {
+  display: none;
+  position: absolute;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  bottom: 126px;
+  right: 70px;
+  background: radial-gradient(
+        74.51% 74.51% at 70.4% 31.2%,
+        #e8eaff 0%,
+        rgba(136, 139, 173, 0) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #5963c1;
+  box-shadow: 0px 18.1356px 36.2712px rgba(35, 0, 248, 0.24),
+    inset 0px 0.906781px 4.53391px rgba(255, 255, 255, 0.58),
+    inset 0px -9.06781px 22.6695px rgba(124, 161, 255, 0.37),
+    inset 4.53391px 7.25425px 9.06781px rgba(210, 165, 255, 0.95);
+}
+@media (max-width: 1024px) {
+  .bubble1,
+  .bubble2,
+  .bubble3,
+  .bubble4,
+  .bubble5 {
+    display: none;
+  }
+  .bubble6,
+  .bubble7 {
+    display: block;
+  }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .bubble6 {
+    width: 250px;
+    height: 250px;
+  }
+  .bubble7 {
+    bottom: 180px;
+    right: 125px;
+    width: 70px;
+    height: 70px;
+  }
 }

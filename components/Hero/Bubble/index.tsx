@@ -9,6 +9,8 @@ export const Bubbles: FC = () => {
       <div className={styles.bubble3} />
       <div className={styles.bubble4} />
       <div className={styles.bubble5} />
+      <div className={styles.bubble6} />
+      <div className={styles.bubble7} />
     </>
   );
 };

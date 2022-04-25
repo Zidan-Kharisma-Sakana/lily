@@ -10,7 +10,7 @@ export const SponsorPartner: FC = () => {
         <img className="my-4" src="/images/sponsor.png" alt="sponsor" />
       </section>
       <section className="flex flex-col justify-center mt-4 items-center">
-        <SectionTitle right=" Community Partners" />
+        <SectionTitle row right=" Annual Partners" />
         <img className="my-4" src="/images/partner.png" alt="partners" />
       </section>
     </>
