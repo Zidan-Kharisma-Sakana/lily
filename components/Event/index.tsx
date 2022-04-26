@@ -5,17 +5,18 @@ import { EventCard, EventCardProps } from "./EventCard";
 export const Event: FC = () => {
   return (
     <>
-      <section className="mt-28">
+      <section id="event" className="mt-8 md:mt-16 lg:mt-28">
         <SectionTitle
           left="Event on "
           sub="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec sem sed"
         />
       </section>
-      <div className="hidescrollbar relative mb-28 mt-8 scroll h-[530px] w-screen overflow-x-scroll">
-        <div className="mt-8 flex absolute top-0 left-0">
+      <div className="hidescrollbar relative mb-8 md:mb-16 lg:mb-28 mt-8 scroll md:h-[530px] md:w-screen md:overflow-x-scroll">
+        <div className="mt-4 md:mt-8 md:flex md:absolute top-0 left-0">
           {data.map((e, idx) => (
             <EventCard key={idx} {...e} />
           ))}
+          <div className="md:w-[200px]"></div>
         </div>
       </div>
     </>

@@ -6,26 +6,38 @@ import { FAQForm } from "./FAQForm";
 import { FAQModal } from "./FAQModal";
 export const FAQ: FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-
   return (
     <section
+      id="faq"
       style={{
         background: "linear-gradient(106.11deg, #091A76 30.02%, #B8454D 122%)",
       }}
-      className="relative px-28 xl:px-[121px] min-h-screen mt-12 overflow-hidden pt-[120px]"
+      className="rounded-t-[34px] relative pb-[60px] py-[60px] sm:pt-[80px] md:pt-[120px] px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] lg:min-h-screen mt-12 overflow-hidden "
     >
       <FAQModal open={openModal} close={() => setOpenModal(false)}>
-        <div className="pt-16 pb-10 px-10 max-w-[741px] max-h-[588px] ">
-          <FAQForm />
-        </div>
+        <FAQForm />
       </FAQModal>
       <img
         src="/icons/faq_vector.svg"
         alt=""
-        className="absolute left-0 top-0 w-full z-10"
+        className="hidden sm:block absolute left-0 top-0 w-full z-10"
       />
       <Dec setOpenModal={setOpenModal} />
       <FAQBody {...FAQData} />
+      <div className="text-xs sm:text-base md:text-lg lg:hidden flex items-center font-medium text-white">
+        <p>Couldn&#39;t find what you&#39;re looking for?</p>
+        <div
+          onClick={() => setOpenModal(true)}
+          style={{
+            color: "#724182",
+            background: "#FAEDF7",
+            borderRadius: "48px",
+          }}
+          className="cursor-pointer font-normal py-2 px-4 ml-2 sm:ml-4 md:ml-6"
+        >
+          Ask Here
+        </div>
+      </div>
     </section>
   );
 };
@@ -58,27 +70,28 @@ const FAQData: FAQBodyProps = {
     {
       question: "Pertanyaan 1",
       answer:
-        "Pertanyaan 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "Jawaban 1, yaitu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
     },
     {
       question: "Pertanyaan 2",
       answer:
-        "Pertanyaan 2 Lorem, Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "Jawaban 2, yaitu Lorem, Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
     },
     {
       question: "Pertanyaan 3",
       answer:
-        "Pertanyaan 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "Jawaban 3, yaitu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
     },
     {
       question: "Pertanyaan 4",
       answer:
-        "Pertanyaan 4 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "Jawaban 4, yaitu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
     },
     {
-      question: "Pertanyaan 5",
+      question:
+        "Pertanyaan 5 sangat panjang pertanyaanya, bisa makan tempat luas banget lmao lmao. Tampangnya nanti kayak gini nih",
       answer:
-        "Pertanyaan 5 Lorem,ore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "Jawaban 5, yaitu Lorem,ore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
     },
   ],
 };

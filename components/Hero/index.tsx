@@ -6,7 +6,7 @@ import { ExploreButton } from "./ExploreButton";
 
 export const Hero: FC = () => {
   return (
-    <div className={styles.hero}>
+    <div id="home" className={styles.hero}>
       <div
         id="hero-content"
         className="flex flex-col justify-center w-full h-full px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] -translate-y-4"
@@ -25,7 +25,7 @@ export const Hero: FC = () => {
             <img
               src="/images/leadseries_logo_putih.png"
               alt="leadseries"
-              className="h-[28px] md:h-[48px] lg:h-auto lg:-ml-2 lg:z-50"
+              className="h-[28px] md:h-[48px] lg:h-auto lg:-ml-2 lg:z-30"
             />
           </div>
           <h1>Has Arrived!</h1>

@@ -8,6 +8,8 @@ import { SponsorPartner } from "../components/SponsorPartner";
 import { Event } from "../components/Event";
 import styles from "../styles/Home.module.css";
 import { FAQ } from "../components/FAQ";
+import { Footer } from "../components/Footer";
+import { Nav } from "../components/Nav";
 
 const Home: NextPage = () => {
   return (
@@ -20,7 +22,8 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
+      <header className="relative">
+        <Nav />
         <Hero />
       </header>
       <div className="overflow-hidden">
@@ -32,6 +35,7 @@ const Home: NextPage = () => {
         </main>
       </div>
       <FAQ/>
+      <Footer />
     </div>
   );
 };

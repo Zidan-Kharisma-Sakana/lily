@@ -18,7 +18,7 @@ export const EventCard: FC<EventCardProps> = (props) => {
         <img
           src={props.url ?? "/images/event_default.jpg"}
           alt="event"
-          className="mb-4"
+          className="hidden md:block mb-4"
         />
         <h6 className="font-bold text-[#724182] text-lg">{props.title}</h6>
         <div className="flex gap-x-2 my-2">
@@ -30,12 +30,12 @@ export const EventCard: FC<EventCardProps> = (props) => {
           props.status === "COMING_SOON" ? (
             <div
               style={{ border: "1px solid #724182" }}
-              className="cursor-not-allowed py-4 rounded-[48px] flex justify-center items-center w-full absolute bottom-0 left-0"
+              className="cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
             >
               <h6 className="text-[#724182]">Coming Soon</h6>
             </div>
           ) : props.status === "REGISTRATION" ? (
-            <div className="bg-[#FAEDF7] cursor-pointer py-4 rounded-[48px] flex justify-center items-center w-full absolute bottom-0 left-0">
+            <div className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
               <h6 className="text-[#724182]">Register Here</h6>
             </div>
           ) : (
@@ -43,14 +43,14 @@ export const EventCard: FC<EventCardProps> = (props) => {
               <LeadCompModal open={open} close={() => setOpen(false)} />
               <div
                 onClick={() => setOpen(true)}
-                className="bg-[#FAEDF7] cursor-pointer py-4 rounded-[48px] flex justify-center items-center w-full absolute bottom-0 left-0"
+                className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
               >
                 <h6 className="text-[#724182]">Learn More</h6>
               </div>
             </>
           )
         ) : (
-          <div className="bg-[#E3E5E6] cursor-not-allowed py-4 rounded-[48px] flex justify-center items-center w-full absolute bottom-0 left-0">
+          <div className="bg-[#E3E5E6] cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
             <h6 style={{ color: "rgba(151, 156, 158, 1)" }}>
               Registration Closed
             </h6>

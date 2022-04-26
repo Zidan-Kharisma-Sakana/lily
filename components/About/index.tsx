@@ -5,11 +5,11 @@ import styles from "./About.module.css";
 import { StatCard } from "./StatCard";
 export const About: FC = () => {
   return (
-    <section className="min-h-screen">
+    <section className="">
       <div className={styles.about}>
         <div
           id="about"
-          className="mt-10 flex mb-4 xl:mb-0 justify-center xl:justify-start items-center w-full font-bold text-black text-[32px]"
+          className="md:mt-10 flex mb-4 xl:mb-0 justify-center xl:justify-start items-center w-full font-bold text-black text-[32px]"
         >
           <h3>What is </h3>
           <img src="/images/leadseries_logo_hitam.jpg" alt="leadseries" />
@@ -39,7 +39,7 @@ export const About: FC = () => {
           </div>
         </div>
       </div>
-      <div className="my-28">
+      <div className="my-8 md:my-16 lg:my-28">
         <SectionTitle
           right="in Number"
           row
