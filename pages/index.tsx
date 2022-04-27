@@ -10,8 +10,14 @@ import styles from "../styles/Home.module.css";
 import { FAQ } from "../components/FAQ";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
+import { useState } from "react";
+import { LeadCompModal } from "../components/Event/LeadCompModal";
 
 const Home: NextPage = () => {
+  const [open, setOpen] = useState(false);
+  function openLeadComp(){
+    setOpen(true)
+  }
   return (
     <div>
       <Head>
@@ -30,10 +36,11 @@ const Home: NextPage = () => {
         <main className="py-8 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] xl:py-11 relative z-10">
           <About />
           <Banner />
-          <Event />
+          <Event openLeadComp={openLeadComp} />
           <SponsorPartner />
         </main>
       </div>
+      <LeadCompModal open={open} close={() => setOpen(false)} />
       <FAQ/>
       <Footer />
     </div>

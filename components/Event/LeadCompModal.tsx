@@ -10,8 +10,8 @@ export const LeadCompModal: FC<{
   return (
     <div
       onClick={close}
-      style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}
-      className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-50 "
+      style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)", zIndex: '500' }}
+      className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center"
     >
       <div
         onClick={(e) => {
@@ -19,7 +19,7 @@ export const LeadCompModal: FC<{
         }}
         className="rounded-3xl overflow-hidden relative w-[816px]"
       >
-        <div className="relative z-20 bg-white p-8 h-screen overflow-y-scroll myscrollbar">
+        <div className="relative z-20 bg-white p-8 h-[95vh] overflow-y-scroll myscrollbar">
           <div
             onClick={close}
             className="text-black text-3xl font-black absolute right-7 top-7 cursor-pointer"
@@ -124,7 +124,7 @@ const RegistrationCard: FC<{
         background:
           "linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(180deg, rgba(210, 165, 255, 0.2375) 0%, rgba(205, 72, 204, 0.25) 100%)",
       }}
-      className={`mx-auto md:mx-0 w-[240px] h-[180px] rounded-xl p-6 ${
+      className={` mx-auto md:mx-0 w-[240px] h-[180px] rounded-xl p-6 ${
         p.isLast ? "sm:col-span-2 md:col-span-1" : ""
       }`}
     >

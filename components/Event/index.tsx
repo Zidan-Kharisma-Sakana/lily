@@ -1,10 +1,12 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { SectionTitle } from "../SectionTitle";
 import { EventCard, EventCardProps } from "./EventCard";
+import { LeadCompModal } from "./LeadCompModal";
 
-export const Event: FC = () => {
+export const Event: FC<{openLeadComp: ()=>void}> = ({openLeadComp}) => {
   return (
     <>
+
       <section id="event" className="mt-8 md:mt-16 lg:mt-28">
         <SectionTitle
           left="Event on "
@@ -14,7 +16,7 @@ export const Event: FC = () => {
       <div className="hidescrollbar relative mb-8 md:mb-16 lg:mb-28 mt-8 scroll md:h-[530px] md:w-screen md:overflow-x-scroll">
         <div className="mt-4 md:mt-8 md:flex md:absolute top-0 left-0">
           {data.map((e, idx) => (
-            <EventCard key={idx} {...e} />
+            <EventCard key={idx} {...e as EventCardProps} openLeadComp={openLeadComp} />
           ))}
           <div className="md:w-[200px]"></div>
         </div>
@@ -23,7 +25,7 @@ export const Event: FC = () => {
   );
 };
 
-const data: EventCardProps[] = [
+const data = [
   {
     title: "Global Ambassador",
     date: "20 May 2022",

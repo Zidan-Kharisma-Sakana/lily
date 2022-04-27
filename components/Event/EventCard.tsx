@@ -9,9 +9,9 @@ export interface EventCardProps {
   date: string;
   description: string;
   status: "CLOSED" | "REGISTRATION" | "COMING_SOON" | "LEARN_MORE";
+  openLeadComp: ()=>void
 }
 export const EventCard: FC<EventCardProps> = (props) => {
-  const [open, setOpen] = useState(false);
   return (
     <div className={styles.eventcard}>
       <div className="relative w-full h-full">
@@ -40,9 +40,8 @@ export const EventCard: FC<EventCardProps> = (props) => {
             </div>
           ) : (
             <>
-              <LeadCompModal open={open} close={() => setOpen(false)} />
               <div
-                onClick={() => setOpen(true)}
+                onClick={props.openLeadComp}
                 className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
               >
                 <h6 className="text-[#724182]">Learn More</h6>

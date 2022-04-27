@@ -5,12 +5,6 @@ export interface FAQBodyProps {
   QnA: { question: string; answer: string }[];
 }
 export const FAQBody: FC<FAQBodyProps> = ({ QnA }) => {
-  const [chosen, setChosen] = useState<number>(-1);
-  function onClick(idx: number) {
-    if (idx === chosen) setChosen(-1);
-    else setChosen(idx);
-  }
-
   return (
     <div className="w-full lg:min-w-[550px] lg:w-[60%] text-white">
       <h4 className="font-bold text-lg sm:text-xl lg:text-2xl">
@@ -20,13 +14,7 @@ export const FAQBody: FC<FAQBodyProps> = ({ QnA }) => {
         Find the answer to all of our most frequently asked questions.
       </h5>
       {QnA.map((data, idx) => (
-        <FAQTab
-          key={`faq-${idx}`}
-          idx={idx}
-          {...data}
-          open={chosen === idx}
-          onClick={onClick}
-        />
+        <FAQTab key={`faq-${idx}`} {...data} />
       ))}
     </div>
   );
@@ -35,13 +23,12 @@ export const FAQBody: FC<FAQBodyProps> = ({ QnA }) => {
 const FAQTab: FC<{
   question: string;
   answer: string;
-  onClick: (idx: number) => void;
-  idx: number;
-  open: boolean;
 }> = (p) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
-      onClick={() => p.onClick(p.idx)}
+      onClick={() => setOpen(!open)}
       style={{
         background: "rgba(255, 255, 255, 0.3)",
         backdropFilter: "blur(4px)",
@@ -54,13 +41,13 @@ const FAQTab: FC<{
           src="/icons/arrow_faq.svg"
           alt=""
           className={`absolute top-1/2 -translate-y-1/2 right-4 sm:right-0 transition-all duration-300 transform ${
-            p.open ? "-rotate-180" : ""
+            open ? "-rotate-180" : ""
           }`}
         />
       </div>
       <div
-        className={`text-xs sm:text-sm md:text-base font-medium transform transition-all ${
-          p.open ? "py-2" : "h-0 text-transparent"
+        className={`text-xs sm:text-sm md:text-base font-medium ${
+          open ? "max-h-none" : "max-h-0 text-transparent"
         }`}
       >
         <p>{p.answer}</p>

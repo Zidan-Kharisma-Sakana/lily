@@ -17,7 +17,7 @@ export const FAQModal: FC<{
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="rounded-3xl w-full sm:w-auto overflow-hidden relative px-4 pr-8 sm:px-8 md:px-10 lg:px-0 "
+        className="rounded-3xl w-full sm:w-auto overflow-hidden relative px-4 sm:px-8 md:px-10 lg:px-0 "
       >
         {/* ini buat dekstop */}
         <img
