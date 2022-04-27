@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { scrollKe } from "../helper";
 import styles from "./Nav.module.css";
@@ -24,6 +25,7 @@ export const Nav: FC = () => {
 const NavContent: FC<{ setOpenModal: React.Dispatch<boolean> }> = ({
   setOpenModal,
 }) => {
+  const r = useRouter()
   return (
     <>
       <img
@@ -62,7 +64,7 @@ const NavContent: FC<{ setOpenModal: React.Dispatch<boolean> }> = ({
         >
           FAQs
         </h3>
-        <button className="py-2 px-4 lg:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer">
+        <button onClick={() =>r.push('/sign-in')} className="py-2 px-4 lg:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer">
           Sign In
         </button>
       </div>

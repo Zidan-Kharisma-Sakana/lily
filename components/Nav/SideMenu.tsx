@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import { FC } from "react";
 import { scrollKe } from "../helper";
 
@@ -13,6 +14,7 @@ export const SideMenu: FC<{
       scrollKe(id);
     };
   }
+  const r = useRouter()
   return (
     <>
       <div
@@ -54,7 +56,7 @@ export const SideMenu: FC<{
               <h4 className="mb-6 cursor-pointer">Logout</h4>
             </>
           ) : (
-            <h4>Sign In</h4>
+            <h4 onClick={() =>r.push('/sign-in')} >Sign In</h4>
           )}
         </div>
       </div>
