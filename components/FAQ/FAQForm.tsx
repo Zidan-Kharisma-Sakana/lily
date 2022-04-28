@@ -17,11 +17,11 @@ export const FAQForm: FC = () => {
   }, [name, email, question, valid]);
 
   return (
-    <div className="text-black lg:text-white font-semibold text-[20px]">
+    <div className="text-black font-semibold text-[20px]">
       <h4 className="font-bold text-base sm:text-lg md:text-xl lg:text-[28px]">
         If you have any questions,
       </h4>
-      <h4 className="font-bold text-base sm:text-lg md:text-xl lg:text-[28px]">
+      <h4 className="font-bold lg:mt-3 text-base sm:text-lg md:text-xl lg:text-[28px]">
         please fill out the form below!
       </h4>
       <div className="text-xs sm:text-sm my-2.5 sm:my-4 lg:my-6 flex flex-col lg:flex-row justify-between w-full lg:w-[560px] xl:w-[614px]">

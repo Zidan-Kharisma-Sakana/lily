@@ -10,15 +10,13 @@ export const SectionTitle: FC<{
   return (
     <>
       <div
-        className={`flex justify-center items-center w-full font-bold text-black text-[32px] ${
-          !row ? "" : "flex-col sm:flex-row"
-        }`}
+        className={`flex justify-center items-center w-full font-bold text-black text-lg sm:text-2xl md:text-[32px]`}
       >
         <h3>{left}</h3>
         <img
           src="/images/leadseries_logo_hitam.jpg"
           alt="leadseries"
-          className="mx-0.5"
+          className="h-[18px] w-[98px] sm:h-[24px] sm:w-[130px] md:h-8 md:w-[176px] mx-0.5"
         />
         <h3>{right}</h3>
       </div>

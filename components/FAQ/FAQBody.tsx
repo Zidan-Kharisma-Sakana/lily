@@ -50,7 +50,7 @@ const FAQTab: FC<{
           open ? "max-h-none" : "max-h-0 text-transparent"
         }`}
       >
-        <p>{p.answer}</p>
+        <p className="pt-2">{p.answer}</p>
       </div>
     </div>
   );

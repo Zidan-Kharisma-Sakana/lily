@@ -3,18 +3,28 @@ import { FC, useState } from "react";
 import { AuthDec } from "./AuthDec";
 import { AuthBox, AuthLayout } from "./AuthLayout";
 import { AuthModal } from "./AuthModal";
+import { ChangePassword } from "./ChangePassword";
 import { ForgetPassword } from "./ForgetPassword";
+import { ResetPassword } from "./ResetPassword";
 
-export const SignInForm: FC = () => {
+export const SignInForm: FC<{ ModalComponent?: "RESET" | "CHANGE" }> = ({
+  ModalComponent,
+}) => {
   const r = useRouter();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(!!ModalComponent);
   function close() {
     setOpen(false);
   }
   return (
     <AuthLayout>
-      <AuthModal open={open} close={close}>
-        <ForgetPassword close={close} />
+      <AuthModal open={open} close={close} preventClose={!!ModalComponent}>
+        {!ModalComponent ? (
+          <ForgetPassword close={close} />
+        ) : ModalComponent === "CHANGE" ? (
+          <ChangePassword close={close} />
+        ) : (
+          <ResetPassword close={close} />
+        )}
       </AuthModal>
       <AuthBox>
         <h1 className="mt-[120px] mb-6 md:mt-0 md:mb-9 text-[40px] lg:text-[48px] font-bold">

@@ -9,14 +9,18 @@ export const About: FC = () => {
       <div className={styles.about}>
         <div
           id="about"
-          className="md:mt-10 flex mb-4 xl:mb-0 justify-center xl:justify-start items-center w-full font-bold text-black text-[32px]"
+          className="text-lg sm:text-2xl md:text-[32px] md:mt-10 flex mb-4 xl:mb-0 justify-center xl:justify-start items-center w-full font-bold text-black text-[32px]"
         >
-          <h3>What is </h3>
-          <img src="/images/leadseries_logo_hitam.jpg" alt="leadseries" />
+          <h3 className="">What is </h3>
+          <img
+            src="/images/leadseries_logo_hitam.jpg"
+            alt="leadseries"
+            className="h-[18px] w-[98px] sm:h-[24px] sm:w-[130px] md:h-8 md:w-[176px]"
+          />
           <h3>?</h3>
         </div>
         <div className="flex flex-col-reverse xl:flex-row justify-between items-end relative mt-4">
-          <div className="text-lg mt-4 xl:mt-0 w-full xl:w-1/2 xl:min-h-[216px]">
+          <div className="text-sm md:text-base lg:text-lg mt-4 xl:mt-0 w-full xl:w-1/2 xl:min-h-[216px]">
             <p>
               LeadSeries 2022 is a virtual event that consists of pre-event such
               as Global Ambassador, main events such as Job Fair, Virtual
@@ -45,16 +49,16 @@ export const About: FC = () => {
           row
           sub="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec sem sed."
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 justify-between items-center mt-8">
-          <StatCard url="/icons/people.svg" num={7000} title="Participants" />
+        <div className="flex flex-wrap gap-y-4 md:gap-y-8 justify-between items-stretch mt-8">
+          <StatCard url="/icons/people.png" num={7000} title="Participants" />
           <StatCard
-            url="/icons/briefcase.svg"
+            url="/icons/briefcase.png"
             num={15}
             title="Partner"
             title2="Companies"
           />
           <StatCard
-            url="/icons/world.svg"
+            url="/icons/world.png"
             num={5}
             title="International"
             title2="Partner"

@@ -22,7 +22,7 @@ export const AuthLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
         style={{ zIndex: 200 }}
         src="/images/leadseries_logo_hitam.jpg"
         alt=""
-        className="md:hidden w-[110px] h-[20px] transform sm:scale-150 fixed top-12 left-12"
+        className="md:hidden w-[110px] h-[20px] transform absolute top-12 left-4 sm:left-12"
       />
       <AuthDec />
       {children}

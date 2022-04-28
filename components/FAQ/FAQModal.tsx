@@ -17,18 +17,13 @@ export const FAQModal: FC<{
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="rounded-3xl w-full sm:w-auto overflow-hidden relative px-4 sm:px-8 md:px-10 lg:px-0 "
+        className="rounded-3xl lg:bg-white  w-full sm:w-auto overflow-hidden relative px-4 sm:px-8 md:px-10 lg:px-0 "
       >
         {/* ini buat dekstop */}
-        <img
-          src="/images/blend.png"
-          alt=""
-          className="hidden lg:block absolute top-0 left-0 w-full h-full z-10"
-        />
         <div className="hidden lg:block relative z-20">
           <div
             onClick={close}
-            className="text-white text-3xl font-black absolute right-7 top-7 cursor-pointer"
+            className="text-black text-3xl font-black absolute right-7 top-7 cursor-pointer"
           >
             &#x2715;
           </div>

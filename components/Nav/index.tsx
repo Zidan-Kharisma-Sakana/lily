@@ -17,7 +17,7 @@ export const Nav: FC = () => {
       <nav className="z-20 bg-[#091A76] items-stretch sm:items-center fixed top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
         <NavContent setOpenModal={setOpen} />
       </nav>
-      <SideMenu open={open} close={close} isLoggedIn />
+      <SideMenu open={open} close={close} isLoggedIn={false} />
     </div>
   );
 };
