@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
+import { useAuth } from "../../context/auth";
 import { scrollKe } from "../helper";
 import styles from "./Nav.module.css";
+import { ProfileButton } from "./ProfileButton";
 import { SideMenu } from "./SideMenu";
 export const Nav: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   function close() {
     setOpen(false);
   }
+  const { user } = useAuth();
   return (
     <div id="nav" className={styles.nav}>
       <nav className="z-30 absolute items-stretch sm:items-center top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
@@ -25,7 +28,7 @@ export const Nav: FC = () => {
 const NavContent: FC<{ setOpenModal: React.Dispatch<boolean> }> = ({
   setOpenModal,
 }) => {
-  const r = useRouter()
+  const r = useRouter();
   return (
     <>
       <img
@@ -64,9 +67,7 @@ const NavContent: FC<{ setOpenModal: React.Dispatch<boolean> }> = ({
         >
           FAQs
         </h3>
-        <button onClick={() =>r.push('/sign-in')} className="py-2 px-4 lg:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer">
-          Sign In
-        </button>
+        <ProfileButton />
       </div>
     </>
   );

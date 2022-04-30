@@ -21,9 +21,6 @@ export const SignInForm: FC<{ ModalComponent?: "RESET" | "CHANGE" }> = ({
     setOpen(false);
   }
   const { login, user } = useAuth();
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <AuthLayout>
       <AuthModal open={open} close={close} preventClose={!!ModalComponent}>

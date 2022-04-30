@@ -15,7 +15,7 @@ export const AuthModal: FC<{
       style={{
         background: "rgba(0,0,0,0.5)",
         backdropFilter: "blur(4px)",
-        zIndex: 100,
+        zIndex: 1000,
       }}
       className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center "
     >

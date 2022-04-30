@@ -8,13 +8,12 @@ export default async function handler(
   if (req.method !== "POST") {
     res.status(405).json("Method not allowed");
   } else {
-    const response = await poster("auth/jwt/create/", req);
-    const data = await response.json();
+    const response = await poster("auth/users/resend_activation/", req);
     try {
       if (response.ok) {
-        res.status(200).json(data);
+        res.status(200).json({ message: "Success" });
       } else {
-        res.status(404).json({ message: data.detail ?? "unknown error" });
+        res.status(500).json({ message: "unknown error" });
       }
     } catch (error) {
       res.status(500).json({ message: error });

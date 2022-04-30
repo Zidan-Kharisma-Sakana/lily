@@ -1,40 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export const FAQForm: FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [question, setQuestion] = useState("");
+  const { register, handleSubmit } = useForm();
 
-  const [valid, setValid] = useState(false);
-
-  useEffect(() => {
-    if (valid && (!name || !email || !question)) {
-      setValid(false);
-    } else if (!valid && name && email && question) {
-      setValid(true);
-    }
-  }, [name, email, question, valid]);
-
-  async function submitQuestion() {
-    const formData = new FormData();
-    formData.append("name", "Zidan");
-    formData.append("email", "Zidan@gmail.com");
-    formData.append("question", "Test 123");
-    console.log(formData);
-    fetch("http://localhost:3000/api/question", {
-      method: "PUT",
-      body: formData,
+  async function submitQuestion(p: any) {
+    const t = toast.loading("Loading ....")
+    const res = await fetch("/api/question", {
+      method: "POST",
+      body: JSON.stringify(p),
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        "Content-type": "application/json",
       },
     });
+    toast.dismiss(t)
+    if (res.ok) {
+      toast.success("Success");
+    } else {
+      const data = await res.json();
+      toast.error(`Error: ${data.message}`);
+    }
   }
+  const onError = (errors: any, e: any) => console.log(errors, e);
 
   return (
     <form
+      onSubmit={handleSubmit(submitQuestion, onError)}
       method="POST"
-      action="/api/question"
       className="text-black font-semibold text-[20px]"
     >
       <h4 className="font-bold text-base sm:text-lg md:text-xl lg:text-[28px]">
@@ -48,8 +42,9 @@ export const FAQForm: FC = () => {
           Name*
         </p>
         <input
-          name="name"
-          onChange={(e) => setName(e.target.value)}
+        placeholder="Enter your name"
+          {...register("name")}
+          required
           type="text"
           className="text-black px-2 py-0.5 rounded-lg text-base w-full lg:w-3/4 border"
         />
@@ -59,9 +54,10 @@ export const FAQForm: FC = () => {
           Email*
         </p>
         <input
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter your email"
+          {...register("email")}
           type="email"
+          required
           className="text-black px-2 py-0.5 rounded-lg text-base w-full lg:w-3/4 border"
         />
       </div>
@@ -71,15 +67,14 @@ export const FAQForm: FC = () => {
         </p>
         <div className="w-full lg:w-3/4 flex flex-col items-start">
           <textarea
-            name="question"
-            onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Enter your question"
+            required
+            {...register("questions")}
             rows={5}
             className="text-black px-2 py-0.5 rounded-lg text-base w-full border"
           />
           <button
-            className={`bg-[#B182B6] text-xs sm:text-base md:text-lg lg:pr-9 relative mx-auto lg:mx-0 justify-center text-white  py-2 px-4 rounded-[48px] mt-7 flex font-medium lg:text-base w-[86%] max-w-[225px] lg:max-w-none lg:w-auto ${
-              valid ? "cursor-pointer" : "cursor-not-allowed"
-            }`}
+            className={`bg-[#B182B6] text-xs sm:text-base md:text-lg lg:pr-9 relative mx-auto lg:mx-0 justify-center text-white  py-2 px-4 rounded-[48px] mt-7 flex font-medium lg:text-base w-[86%] max-w-[225px] lg:max-w-none lg:w-auto cursor-pointer`}
           >
             <p>Submit</p>
             <img

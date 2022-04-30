@@ -2,6 +2,7 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { scrollKe } from "../helper";
+import { ProfileButton } from "./ProfileButton";
 
 export const SideMenu: FC<{
   isLoggedIn: boolean;
@@ -50,14 +51,7 @@ export const SideMenu: FC<{
         </div>
         <div className="w-12 bg-white h-0.5 rounded my-6" />
         <div className="font-bold text-xs text-white">
-          {isLoggedIn ? (
-            <>
-              <h4 className="mb-6 cursor-pointer">Profile</h4>
-              <h4 className="mb-6 cursor-pointer">Logout</h4>
-            </>
-          ) : (
-            <h4 onClick={() =>r.push('/sign-in')} >Sign In</h4>
-          )}
+          <ProfileButton />
         </div>
       </div>
       {open && (
