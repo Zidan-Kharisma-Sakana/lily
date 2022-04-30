@@ -16,8 +16,27 @@ export const FAQForm: FC = () => {
     }
   }, [name, email, question, valid]);
 
+  async function submitQuestion() {
+    const formData = new FormData();
+    formData.append("name", "Zidan");
+    formData.append("email", "Zidan@gmail.com");
+    formData.append("question", "Test 123");
+    console.log(formData);
+    fetch("http://localhost:3000/api/question", {
+      method: "PUT",
+      body: formData,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  }
+
   return (
-    <div className="text-black font-semibold text-[20px]">
+    <form
+      method="POST"
+      action="/api/question"
+      className="text-black font-semibold text-[20px]"
+    >
       <h4 className="font-bold text-base sm:text-lg md:text-xl lg:text-[28px]">
         If you have any questions,
       </h4>
@@ -29,6 +48,7 @@ export const FAQForm: FC = () => {
           Name*
         </p>
         <input
+          name="name"
           onChange={(e) => setName(e.target.value)}
           type="text"
           className="text-black px-2 py-0.5 rounded-lg text-base w-full lg:w-3/4 border"
@@ -39,6 +59,7 @@ export const FAQForm: FC = () => {
           Email*
         </p>
         <input
+          name="email"
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           className="text-black px-2 py-0.5 rounded-lg text-base w-full lg:w-3/4 border"
@@ -50,11 +71,12 @@ export const FAQForm: FC = () => {
         </p>
         <div className="w-full lg:w-3/4 flex flex-col items-start">
           <textarea
+            name="question"
             onChange={(e) => setQuestion(e.target.value)}
             rows={5}
             className="text-black px-2 py-0.5 rounded-lg text-base w-full border"
           />
-          <div
+          <button
             className={`bg-[#B182B6] text-xs sm:text-base md:text-lg lg:pr-9 relative mx-auto lg:mx-0 justify-center text-white  py-2 px-4 rounded-[48px] mt-7 flex font-medium lg:text-base w-[86%] max-w-[225px] lg:max-w-none lg:w-auto ${
               valid ? "cursor-pointer" : "cursor-not-allowed"
             }`}
@@ -65,9 +87,9 @@ export const FAQForm: FC = () => {
               alt=""
               className="absolute right-4 lg:right-2 top-1/2 transform -translate-y-1/2 -rotate-90"
             />
-          </div>
+          </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
