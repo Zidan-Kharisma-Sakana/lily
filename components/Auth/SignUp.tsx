@@ -83,7 +83,7 @@ export const SignUpForm: FC = () => {
             </button>
           </div>
         </form>
-        <p className="text-black font-semibold text-center mt-4 lg:mt-5">
+        <p className="text-black font-semibold text-center mt-4 lg:mt-5 mb-10 md:mb-0">
           Have an account?
           <span
             onClick={() => r.push("/sign-in")}
