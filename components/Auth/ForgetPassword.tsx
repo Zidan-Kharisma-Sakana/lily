@@ -40,10 +40,7 @@ export const ForgetPassword: FC<{ close: () => void }> = ({ close }) => {
           id="email"
           className="w-full border rounded-lg mt-7 mb-6 p-4 text-[#72777A]"
         />
-        <div
-          onClick={sendResetPassword}
-          className="rounded-[48px] justify-center gap-x-2 cursor-pointer flex py-2 px-4 mr-2 text-white bg-[#724182]"
-        >
+        <div className="w-full rounded-[48px] justify-center gap-x-2 cursor-pointer flex py-2 px-4 mr-2 text-white bg-[#724182]">
           <img src="/icons/send.svg" alt="" />
           <p>Send</p>
         </div>

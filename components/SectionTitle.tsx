@@ -14,7 +14,7 @@ export const SectionTitle: FC<{
       >
         <h3>{left}</h3>
         <img
-          src="/images/leadseries_logo_hitam.jpg"
+          src="/images/leadseries_logo_putih_2.png"
           alt="leadseries"
           className="h-[18px] w-[98px] sm:h-[24px] sm:w-[130px] md:h-8 md:w-[176px] mx-0.5"
         />

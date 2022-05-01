@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import { FC } from "react";
 import { AuthDec } from "./AuthDec";
 
 export const AuthLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const r = useRouter();
   return (
     <main
       style={{
@@ -13,12 +15,14 @@ export const AuthLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
       className="relative min-h-screen overflow-hidden flex justify-center items-center md:py-28"
     >
       <img
+        onClick={() => r.push("/")}
         style={{ zIndex: 200 }}
         src="/images/leadseries_logo_putih.png"
         alt=""
-        className="hidden md:block w-[230px] h-[38px] absolute top-12 left-12"
+        className="hidden md:block w-[230px] h-[38px] absolute top-12 left-12 cursor-pointer"
       />
       <img
+        onClick={() => r.push("/")}
         style={{ zIndex: 200 }}
         src="/images/leadseries_logo_hitam.jpg"
         alt=""

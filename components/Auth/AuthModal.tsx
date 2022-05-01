@@ -25,14 +25,12 @@ export const AuthModal: FC<{
         }}
         className="md:rounded-3xl w-full sm:w-auto overflow-hidden relative md:px-10 lg:px-0 "
       >
-        {!preventClose ?? (
-          <div
-            onClick={close}
-            className="text-black text-3xl font-black absolute right-7 top-7 cursor-pointer"
-          >
-            &#x2715;
-          </div>
-        )}
+        <div
+          onClick={close}
+          className="text-black text-3xl md:hidden font-medium absolute right-7 top-7 cursor-pointer"
+        >
+          &#x2715;
+        </div>
         {children}
       </div>
     </div>

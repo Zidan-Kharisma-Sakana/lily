@@ -32,7 +32,8 @@ const NavContent: FC<{ setOpenModal: React.Dispatch<boolean> }> = ({
   return (
     <>
       <img
-        className="w-[150px] h-[29px] md:w-[189px] md:h-[36px]"
+        onClick={() => scrollKe("home")}
+        className="w-[150px] h-[29px] md:w-[189px] md:h-[36px] cursor-pointer"
         src="/images/leadseries_logo_putih.png"
         alt="logo"
       />
