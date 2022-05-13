@@ -18,6 +18,15 @@ a {
   box-sizing: border-box;
 }
 
+.blur4px{
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.bgGlass{
+  background: rgba(205, 207, 208, 0.25);
+}
+
 /* hide scrollbar but allow scrolling */
 .hidescrollbar {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
