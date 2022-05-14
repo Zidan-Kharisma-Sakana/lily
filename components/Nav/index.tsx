@@ -6,7 +6,8 @@ import { scrollKe } from "../helper";
 import styles from "./Nav.module.css";
 import { ProfileButton } from "./ProfileButton";
 import { SideMenu } from "./SideMenu";
-export const Nav: FC = () => {
+
+export const Nav: FC<{ isHome?: boolean }> = ({ isHome = true }) => {
   const [open, setOpen] = useState<boolean>(false);
   function close() {
     setOpen(false);
@@ -14,9 +15,11 @@ export const Nav: FC = () => {
   const { user } = useAuth();
   return (
     <div id="nav" className={styles.nav}>
-      <nav className="z-30 absolute items-stretch sm:items-center top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
-        <NavContent setOpenModal={setOpen} />
-      </nav>
+      {!!isHome && (
+        <nav className="z-30 absolute items-stretch sm:items-center top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
+          <NavContent setOpenModal={setOpen} />
+        </nav>
+      )}
       <nav className="z-20 bg-[#091A76] items-stretch sm:items-center fixed top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
         <NavContent setOpenModal={setOpen} />
       </nav>

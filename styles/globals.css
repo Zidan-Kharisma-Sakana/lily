@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 a {
@@ -18,15 +18,32 @@ a {
   box-sizing: border-box;
 }
 
-.blur4px{
+.blur4px {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
-
-.bgGlass{
+.blur16px {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.bgGlass {
   background: rgba(205, 207, 208, 0.25);
 }
 
+.glassCard {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(205, 207, 208, 0.25);
+  border-radius: 8px;
+  padding: 16px;
+}
+@supports (-moz-appearance: none) {
+  .blur16px {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+}
 /* hide scrollbar but allow scrolling */
 .hidescrollbar {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -41,11 +58,11 @@ a {
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
+  /* -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none; */
 }
 *:focus {
   outline: none !important;

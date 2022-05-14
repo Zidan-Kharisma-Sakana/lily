@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const Footer: FC = () => {
   return (
-    <footer className="bg-white text-xs py-8 grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3 px-4 sm:py-10 sm:px-10 md:px-14  lg:px-28  lg:pt-10 lg:pb-12 xl:px-[121px] xl:pt-12 xl:pb-16">
+    <footer className="bg-sky-light text-xs py-8 grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3 px-4 sm:py-10 sm:px-10 md:px-14  lg:px-28  lg:pt-10 lg:pb-12 xl:px-[121px] xl:pt-12 xl:pb-16">
       <section id="footer-logo" className="font-medium text-xs">
         <img
           src="/images/footer_logo.png"

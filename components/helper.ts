@@ -6,3 +6,9 @@ export const scrollKe = (element_id: string) => {
     }
   }
 };
+export const shortenName = (name: string, max: number) => {
+  if (name.length > max) {
+    return name.slice(0, max) + "..";
+  }
+  return name;
+};
