@@ -37,6 +37,12 @@ a {
   border-radius: 8px;
   padding: 16px;
 }
+.glassCardNoPad{
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(205, 207, 208, 0.25);
+  border-radius: 8px;
+}
 @supports (-moz-appearance: none) {
   .blur16px {
     backdrop-filter: blur(16px);
