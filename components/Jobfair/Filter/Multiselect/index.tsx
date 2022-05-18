@@ -50,7 +50,7 @@ export const Multiselect: FC<{
           >
             <div
               className={`w-4 h-4 text-white flex justify-center items-center rounded-md border border-ink-light ${
-                checked[idx] && "bg-info-light border-none"
+                checked[idx] && "bg-primary-base border-none"
               }`}
             >
               {checked[idx] && <p>&#10004;</p>}

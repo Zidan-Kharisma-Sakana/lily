@@ -10,12 +10,16 @@ export const FRemote: FC = () => {
   }, [router]);
   const onClick = (isRemote: boolean) => {
     const queries = router.query;
-    router.push({
-      query: {
-        ...queries,
-        mustRemote: String(isRemote),
+    router.push(
+      {
+        query: {
+          ...queries,
+          mustRemote: String(isRemote),
+        },
       },
-    });
+      undefined,
+      { scroll: false }
+    );
   };
   return (
     <div
@@ -33,8 +37,11 @@ const Toggle: FC<{ isRemote: boolean; toggle: any }> = ({
   toggle,
 }) => {
   return (
-    <div className="bg-ink-dark rounded-[32px] p-1.5 w-12">
-      {/* <div className="" /> */}
+    <div
+      className={`rounded-[32px] p-1.5 w-12 ${
+        isRemote ? "bg-primary-base" : "bg-ink-dark"
+      }`}
+    >
       <div
         className={`bg-white rounded-full w-3 h-3 transition-all ${
           isRemote ? "translate-x-[200%]" : ""

@@ -41,3 +41,44 @@ export const JobCard: FC<JobCardProps> = (props) => {
     </div>
   );
 };
+
+
+export const JobCardMini: FC<JobCardProps> = (props) => {
+  return (
+    <div className="glassCard flex w-full text-xs mb-4 gap-x-2.5 cursor-pointer">
+      <img
+        className="w-[36px] h-[36px] rounded-lg bg-[#C4C4C4]"
+        src={props.company.img}
+        alt={props.company.name + " logo"}
+      />
+      <div className="flex flex-col justify-between gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base">
+
+        <div>
+          <h4 className="font-bold text-sm mb-1">
+            {props.title}
+          </h4>
+          <h6>{props.company.name}</h6>
+        </div>
+
+        <div className="">
+          <div className="flex gap-x-2 mb-1 items-center md:w-[120px] lg:w-[185px]">
+            <img
+              src="/icons/map-pin.svg"
+              alt="location"
+              className="w-[10px] h-[12px]"
+            />
+            <p>{props.location}</p>
+          </div>
+          <div className="flex gap-x-2 mb-1 items-center">
+            <img
+              src="/icons/briefcase.svg"
+              alt="tipe"
+              className="w-[12px] h-[12px]"
+            />
+            <p>{props.type}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
