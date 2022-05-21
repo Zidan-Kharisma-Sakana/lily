@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { JobCardProps } from "../../components/Dashboard";
 import { Footer } from "../../components/Footer";
+import { JobSearchDec } from "../../components/Jobfair/Bubbles/JobSearchDec";
 import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
@@ -31,6 +32,7 @@ const JobfairPage: NextPage = () => {
       <main
         className={`my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px]`}
       >
+        <JobSearchDec />
         <div className="w-full flex  mb-10 items-center justify-between">
           <h1 className="text-primary-darkest text-[32px] font-bold">
             Job Fair

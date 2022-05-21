@@ -8,14 +8,16 @@ export const SideMenu: FC<{
   isLoggedIn: boolean;
   open: boolean;
   close: () => void;
-}> = ({ open, close, isLoggedIn }) => {
+  isHome?: boolean;
+}> = ({ open, close, isLoggedIn, isHome = true }) => {
   function to(id: string) {
     return () => {
       close();
-      scrollKe(id);
+      if (!isHome) r.push(`/#${id}`);
+      else scrollKe(id);
     };
   }
-  const r = useRouter()
+  const r = useRouter();
   return (
     <>
       <div

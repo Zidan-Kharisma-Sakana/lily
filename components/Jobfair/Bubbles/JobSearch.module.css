@@ -1,0 +1,60 @@
+.bubble1 {
+  position: absolute;
+  top: 581px;
+  left: -105px;
+  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+
+  background: radial-gradient(
+      96% 96% at 70.4% 31.2%,
+      #ffe3d3 0%,
+      rgba(179, 0, 183, 0) 100%
+    ),
+    #1c40c2;
+  box-shadow: 0px 0px 26.0624px rgba(255, 255, 255, 0.13),
+    -49px 87px 104.25px rgba(255, 157, 203, 0.33),
+    inset 0px 5.21248px 39.0936px rgba(255, 255, 255, 0.76),
+    inset 0px -26.0624px 65.156px rgba(255, 255, 255, 0.53),
+    inset 13.0312px 26.0624px 130.312px #ff8777;
+}
+.bubble2 {
+  position: absolute;
+  top: 193px;
+  right: -23px;
+  border-radius: 100%;
+  width: 172px;
+  height: 172px;
+
+  background: radial-gradient(
+      96% 96% at 70.4% 31.2%,
+      #ffe3d3 0%,
+      rgba(179, 0, 183, 0) 100%
+    ),
+    #352b37;
+  box-shadow: 0px 0px 26.0624px rgba(255, 255, 255, 0.13),
+    -49px 87px 104.25px rgba(255, 157, 203, 0.33),
+    inset 0px 5.21248px 39.0936px rgba(255, 255, 255, 0.76),
+    inset 0px -26.0624px 65.156px rgba(255, 255, 255, 0.53),
+    inset 13.0312px 26.0624px 130.312px #ff8777;
+}
+.bubble3 {
+  position: absolute;
+  top: 769px;
+  right: -50px;
+  border-radius: 100%;
+  width: 304px;
+  height: 304px;
+  z-index: 0;
+  background: radial-gradient(
+      96% 96% at 70.4% 31.2%,
+      #ffe3d3 0%,
+      rgba(179, 0, 183, 0) 100%
+    ),
+    #c500f7;
+  box-shadow: 0px 0px 26.0624px rgba(255, 255, 255, 0.13),
+    -49px 87px 104.25px rgba(255, 157, 203, 0.33),
+    inset 0px 5.21248px 39.0936px rgba(255, 255, 255, 0.76),
+    inset 0px -26.0624px 65.156px rgba(255, 255, 255, 0.53),
+    inset 13.0312px 26.0624px 130.312px #ff8777;
+}

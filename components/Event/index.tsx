@@ -1,12 +1,13 @@
 import { FC, useState } from "react";
 import { SectionTitle } from "../SectionTitle";
 import { EventCard, EventCardProps } from "./EventCard";
-import { LeadCompModal } from "./LeadCompModal";
 
-export const Event: FC<{openLeadComp: ()=>void}> = ({openLeadComp}) => {
+export const Event: FC<{
+  openLeadComp: () => void;
+  openLeadTalk: () => void;
+}> = ({ openLeadComp, openLeadTalk }) => {
   return (
     <>
-
       <section id="event" className="mt-8 md:mt-16 lg:mt-28">
         <SectionTitle
           left="Event on "
@@ -16,7 +17,12 @@ export const Event: FC<{openLeadComp: ()=>void}> = ({openLeadComp}) => {
       <div className="hidescrollbar relative mb-8 md:mb-16 lg:mb-28 mt-8 scroll md:h-[530px] md:w-screen md:overflow-x-scroll">
         <div className="mt-4 md:mt-8 md:flex md:absolute top-0 left-0">
           {data.map((e, idx) => (
-            <EventCard key={idx} {...e as EventCardProps} openLeadComp={openLeadComp} />
+            <EventCard
+              key={idx}
+              {...(e as EventCardProps)}
+              openLeadComp={openLeadComp}
+              openLeadTalk={openLeadTalk}
+            />
           ))}
           <div className="md:w-[200px]"></div>
         </div>
@@ -45,7 +51,7 @@ const data = [
     date: "18 May - 25 June 2022",
     description:
       "	LeadComp is an Initiative SDG Competition that aims to accelerate youth’s innovation towards the creation of sustainable economic growth. This event will focus on SDGs No 8 and 9, while using Smart City as the handy innovation to achieve a greater state.",
-    status: "LEARN_MORE",
+    status: "LEADCOMP",
   },
   {
     title: "Job Fair",
@@ -73,6 +79,6 @@ const data = [
     date: "2 & 3 July 2022",
     description:
       "For the peak of our event, we are bringing an exclusive talkshow that is filled with impactful speakers from national and international levels for two days. The talkshows are designed specifically for youths who are interested in developing their career in startups, consulting, and finance.",
-    status: "COMING_SOON",
+    status: "LEADTALK",
   },
 ];

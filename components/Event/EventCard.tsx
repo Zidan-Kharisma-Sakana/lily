@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC, useState } from "react";
 import styles from "./Event.module.css";
-import { LeadCompModal } from "./LeadCompModal";
 
 export interface EventCardProps {
   url?: string;
   title: string;
   date: string;
   description: string;
-  status: "CLOSED" | "REGISTRATION" | "COMING_SOON" | "LEARN_MORE";
-  openLeadComp: ()=>void
+  status: "CLOSED" | "REGISTRATION" | "COMING_SOON" | "LEADCOMP" | "LEADTALK";
+  openLeadComp: () => void;
+  openLeadTalk: () => void;
 }
 export const EventCard: FC<EventCardProps> = (props) => {
   return (
@@ -26,36 +26,54 @@ export const EventCard: FC<EventCardProps> = (props) => {
           <p className="font-bold text-black text-xs">{props.date}</p>
         </div>
         <p className="text-sm text-justify">{props.description}</p>
-        {props.status !== "CLOSED" ? (
-          props.status === "COMING_SOON" ? (
-            <div
-              style={{ border: "1px solid #724182" }}
-              className="cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
-            >
-              <h6 className="text-[#724182]">Coming Soon</h6>
-            </div>
-          ) : props.status === "REGISTRATION" ? (
-            <div className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
-              <h6 className="text-[#724182]">Register Here</h6>
-            </div>
-          ) : (
-            <>
-              <div
-                onClick={props.openLeadComp}
-                className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
-              >
-                <h6 className="text-[#724182]">Learn More</h6>
-              </div>
-            </>
-          )
-        ) : (
-          <div className="bg-[#E3E5E6] cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
-            <h6 style={{ color: "rgba(151, 156, 158, 1)" }}>
-              Registration Closed
-            </h6>
-          </div>
-        )}
+        <Content {...props} />
       </div>
     </div>
   );
+};
+
+const Content: FC<EventCardProps> = (props) => {
+  switch (props.status) {
+    case "REGISTRATION":
+      return (
+        <div className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
+          <h6 className="text-[#724182]">Register Here</h6>
+        </div>
+      );
+    case "CLOSED":
+      return (
+        <div className="bg-[#E3E5E6] cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
+          <h6 style={{ color: "rgba(151, 156, 158, 1)" }}>
+            Registration Closed
+          </h6>
+        </div>
+      );
+    case "LEADCOMP":
+      return (
+        <div
+          onClick={props.openLeadComp}
+          className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
+        >
+          <h6 className="text-[#724182]">Learn More</h6>
+        </div>
+      );
+    case "LEADTALK":
+      return (
+        <div
+          onClick={props.openLeadTalk}
+          className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
+        >
+          <h6 className="text-[#724182]">Learn More</h6>
+        </div>
+      );
+    default:
+      return (
+        <div
+          style={{ border: "1px solid #724182" }}
+          className="cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0"
+        >
+          <h6 className="text-[#724182]">Coming Soon</h6>
+        </div>
+      );
+  }
 };

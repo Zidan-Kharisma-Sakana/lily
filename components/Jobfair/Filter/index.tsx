@@ -6,7 +6,7 @@ export const Filter: FC = () => {
   return (
     <div
       style={{ background: "rgba(205, 207, 208, 0.25)" }}
-      className="p-6 rounded-lg"
+      className="p-6 rounded-lg blur4px"
     >
       <FilterBody />
     </div>

@@ -14,9 +14,9 @@ export interface CompanyProfileProps {
 
 export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
   return (
-    <div className="glassCardNoPad w-full p-6 text-xs">
+    <div className="glassCardNoPad w-full p-6 text-xs relative z-5">
       {/* image and profil */}
-      <div className="w-full flex md:flex-col gap-4">
+      <div className="w-full fle xmd:flex-col gap-4">
         <img
           src={props.logo}
           alt={props.name + " logo"}

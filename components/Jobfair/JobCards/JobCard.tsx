@@ -4,14 +4,16 @@ import { JobCardProps } from "../../Dashboard";
 
 export const JobCard: FC<JobCardProps> = (props) => {
   return (
-    <div className="glassCard flex w-full text-xs mb-4 md:mb-6 gap-x-3 sm:gap-x-6 cursor-pointer">
+    <div
+      style={{ background: "rgba(205, 207, 208, 0.25)" }}
+      className="p-6 z-5 relative rounded-lg glassCard flex w-full text-xs mb-4 md:mb-6 gap-x-3 sm:gap-x-6 cursor-pointer"
+    >
       <img
         className="w-[45px] h-[45px] sm:w-[72px] sm:h-[72px] md:w-[96px] md:h-[96px] rounded-lg bg-[#C4C4C4]"
         src={props.company.img}
         alt={props.company.name + " logo"}
       />
       <div className="flex flex-col justify-between gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base">
-
         <div>
           <h4 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">
             {props.title}
@@ -42,7 +44,6 @@ export const JobCard: FC<JobCardProps> = (props) => {
   );
 };
 
-
 export const JobCardMini: FC<JobCardProps> = (props) => {
   return (
     <div className="glassCard flex w-full text-xs mb-4 gap-x-2.5 cursor-pointer">
@@ -52,11 +53,8 @@ export const JobCardMini: FC<JobCardProps> = (props) => {
         alt={props.company.name + " logo"}
       />
       <div className="flex flex-col justify-between gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base">
-
         <div>
-          <h4 className="font-bold text-sm mb-1">
-            {props.title}
-          </h4>
+          <h4 className="font-bold text-sm mb-1">{props.title}</h4>
           <h6>{props.company.name}</h6>
         </div>
 

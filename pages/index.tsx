@@ -11,12 +11,22 @@ import { FAQ } from "../components/FAQ";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 import { useState } from "react";
-import { LeadCompModal } from "../components/Event/LeadCompModal";
+import { HomeModal } from "../components/Event/HomeModal";
+
+export enum HomeModalState {
+  LEADCOMP = "LeadComp",
+  LEADTALK = "LeadTalk",
+  NOSHOW = "NOSHOW",
+}
 
 const Home: NextPage = () => {
-  const [open, setOpen] = useState(false);
-  function openLeadComp(){
-    setOpen(true)
+  const [open, setOpen] = useState<HomeModalState>(HomeModalState.NOSHOW);
+  function openLeadComp() {
+    setOpen(HomeModalState.LEADCOMP);
+  }
+  function openLeadTalk() {
+    console.log("TEST");
+    setOpen(HomeModalState.LEADTALK);
   }
   return (
     <div>
@@ -32,16 +42,16 @@ const Home: NextPage = () => {
         <Nav />
         <Hero />
       </header>
-      <div className="overflow-hidden">
+      <div className={`overflow-hidden `}>
         <main className="py-8 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] xl:py-11 relative z-10">
           <About />
           <Banner />
-          <Event openLeadComp={openLeadComp} />
+          <Event openLeadComp={openLeadComp} openLeadTalk={openLeadTalk} />
           <SponsorPartner />
         </main>
       </div>
-      <LeadCompModal open={open} close={() => setOpen(false)} />
-      <FAQ/>
+      <HomeModal open={open} close={() => setOpen(HomeModalState.NOSHOW)} />
+      <FAQ />
       <Footer />
     </div>
   );
