@@ -10,24 +10,38 @@ import styles from "../styles/Home.module.css";
 import { FAQ } from "../components/FAQ";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HomeModal } from "../components/Event/HomeModal";
+import { useRouter } from "next/router";
+import { OnboardingContentProps } from "../components/Event/ModalBody/OnboardingContent";
 
 export enum HomeModalState {
   LEADCOMP = "LeadComp",
   LEADTALK = "LeadTalk",
   NOSHOW = "NOSHOW",
+  ONBOARDING = "Account Created!",
 }
 
 const Home: NextPage = () => {
   const [open, setOpen] = useState<HomeModalState>(HomeModalState.NOSHOW);
+  const router = useRouter();
   function openLeadComp() {
     setOpen(HomeModalState.LEADCOMP);
   }
   function openLeadTalk() {
-    console.log("TEST");
     setOpen(HomeModalState.LEADTALK);
   }
+  useEffect(() => {
+    const isOnboarding = !!router.query["onboard"] ?? false;
+    if (isOnboarding) setOpen(HomeModalState.ONBOARDING);
+  }, [router]);
+
+  const data: OnboardingContentProps = {
+    fullname: "...",
+    email: "aaa@gmail.com",
+    phone: "",
+  };
+
   return (
     <div>
       <Head>
@@ -50,7 +64,11 @@ const Home: NextPage = () => {
           <SponsorPartner />
         </main>
       </div>
-      <HomeModal open={open} close={() => setOpen(HomeModalState.NOSHOW)} />
+      <HomeModal
+        data={data}
+        open={open}
+        close={() => setOpen(HomeModalState.NOSHOW)}
+      />
       <FAQ />
       <Footer />
     </div>

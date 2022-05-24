@@ -34,7 +34,6 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
     const data = await res.json();
     if (res.ok) {
       setUser(data);
-      r.push("/");
     } else {
       toast.error(data.message ?? "Unknown Error", {
         duration: 5000,
@@ -45,6 +44,8 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get("token");
+      console.log("-------");
+      console.log(token);
       if (token) {
         retrieveUser(token);
       }
@@ -65,6 +66,8 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
     toast.dismiss(t);
     const data = await res.json();
     if (res.ok) {
+      console.log(data)
+      Cookies.set('token', data.access, { expires: 3 })
       retrieveUser(data.access);
     } else {
       toast.error(data?.message ?? "No Active Account Found", {

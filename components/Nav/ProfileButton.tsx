@@ -7,7 +7,7 @@ export const ProfileButton: FC = () => {
   const [onHover, setHover] = useState(false);
   const { user, logout } = useAuth();
   const r = useRouter();
-
+  console.log(user)
   if (!user)
     return (
       <>

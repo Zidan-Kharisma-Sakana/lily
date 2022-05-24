@@ -1,5 +1,7 @@
+import Cookies from "js-cookie";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FieldWrapper } from "./FieldWrapper";
 
 export interface ProfileFormProps {
@@ -8,9 +10,13 @@ export interface ProfileFormProps {
 }
 export const ProfileForm: React.FC<{
   data: ProfileFormProps;
-}> = ({ data }) => {
-  const { register, handleSubmit } = useForm<ProfileFormProps>({
-    defaultValues: data,
+  close: () => void;
+}> = ({ data, close }) => {
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      full_name: data.name,
+      phone: data.phone,
+    },
   });
   const [changed, setChanged] = useState<boolean>(false);
 
@@ -20,9 +26,27 @@ export const ProfileForm: React.FC<{
     }
   };
 
-  const onSubmit = (data: any) => {
-    alert(data);
-  };
+  async function onSubmit(obj: any) {
+    const token = Cookies.get("token");
+    const t = toast.loading("changing your profile...");
+    const res = await fetch("/api/dashboard/profile", {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    toast.dismiss(t);
+    if (res.ok) {
+      toast.success("Success");
+      close();
+    } else {
+      const msg = await res.json();
+      toast.error(msg.message ?? "Oops, something went wrong");
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h4 className="font-bold text-primary-darkest text-lg mb-3">
@@ -34,7 +58,7 @@ export const ProfileForm: React.FC<{
         <input
           onKeyDown={checkChanges}
           className="w-full"
-          {...register("name", { required: true })}
+          {...register("full_name", { required: true })}
           type="text"
         />
       </FieldWrapper>

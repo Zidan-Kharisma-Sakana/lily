@@ -4,6 +4,8 @@ import { FieldWrapper } from "./FieldWrapper";
 import { useDropzone } from "react-dropzone";
 import { shortenName } from "../../../../helper";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
+import { baseURL } from "../../../../../utils/api";
 
 export interface JobFairFormProps {
   title: string;
@@ -13,6 +15,7 @@ export interface JobFairFormProps {
 
 export const JobFairForm: React.FC<{
   data: JobFairFormProps[];
+  close: () => void;
 }> = ({ data }) => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -24,6 +27,7 @@ export const JobFairForm: React.FC<{
   const [changed, setChanged] = useState<boolean>(false);
   const [filename, setFileName] = useState<string>(data[0].filename);
   const [file, setFile] = useState<File>();
+  const [load, setLoad] = useState(false);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "application/pdf": [".pdf"], "application/zip": [".zip"] },
@@ -43,7 +47,9 @@ export const JobFairForm: React.FC<{
             case "file-too-large":
               return toast.error("File too large, maximum size is 5 mb");
             case "file-invalid-type":
-              return toast.error("Please submit file with extensions of .pdf or .zip");
+              return toast.error(
+                "Please submit file with extensions of .pdf or .zip"
+              );
             default:
               return toast.error(err.message);
           }
@@ -58,8 +64,39 @@ export const JobFairForm: React.FC<{
     }
   };
 
-  const onSubmit = (data: any) => {
-    alert(data);
+  const onSubmit = async (data: any) => {
+    if (load) return;
+    setLoad(true);
+    const token = Cookies.get("token");
+    const t = toast.loading("changing your profile...");
+    const formData = new FormData();
+    formData.append("linkedin", data.linkedin);
+    formData.append("portfolio_url", data.portfolio);
+    if (!!file) {
+      formData.append("cv", file);
+    }
+    
+    console.log("E");
+    const res = await fetch("api/dashboard/jobfair/", {
+      body: formData,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      method: "POST",
+    });
+
+    const msg = await res.json();
+    console.log(msg);
+
+    toast.dismiss(t);
+    if (res.ok) {
+      toast.success("Success");
+      close();
+    } else {
+      const msg = await res.json();
+      toast.error(msg.message ?? "Oops, something went wrong");
+    }
+    setLoad(false);
   };
 
   return (

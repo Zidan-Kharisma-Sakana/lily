@@ -1,0 +1,59 @@
+
+const apiRoute = nextConnect({
+  onError(error, req, res) {
+    res
+      .status(501)
+      .json({ error: `Sorry something Happened! ${error.message}` });
+  },
+  onNoMatch(req, res) {
+    res.status(405).json({ error: `Method "${req.method}" Not Allowed` });
+  },
+});
+
+apiRoute.use(multer().any());
+
+apiRoute.post(async (req, res) => {
+  console.log(); // Your files here
+  console.log(req.body); // Your form data here
+  // Any logic with your data here
+  const fpath = "/home/rin-chan/Downloads/test.pdf";
+  const cv = req.files[0] as File;
+  console.log("----");
+
+  const formdata = new FormData();
+  formdata.append("linkedin", "https://www.npmjs.com/package/");
+  formdata.append("portfolio_url", "https://www.npmjs.com/h/");
+  console.log("----");
+
+  try {
+    console.log(cv);
+    const c = fs.readFileSync(fpath);
+    formdata.append("cv", c);
+    console.log("000");
+    
+    const result = await fetch(baseURL("api/profile/jobfair/"), {
+      body: formdata as unknown as BodyInit,
+      headers: {
+        Authorization: req.headers.authorization ?? "",
+      },
+      method: "PATCH",
+    });
+
+    if (result.ok) {
+      console.log("ok");
+      const message = await result.json();
+      console.log(message);
+      res.status(200).json({ message: "Success!" });
+    } else {
+      console.log("not ok");
+      const message = await result.json();
+      console.log(message);
+      res.status(500).json({ message: message.detail ?? "unknown error" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error });
+  }
+});
+
+export default apiRoute;

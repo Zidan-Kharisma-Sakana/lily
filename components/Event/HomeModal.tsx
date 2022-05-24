@@ -1,15 +1,116 @@
 /* eslint-disable @next/next/no-img-element */
-import { FC } from "react";
-import { HomeModalState } from "../../pages";
+import { useRouter } from "next/router";
+import { FC, useState } from "react";
+import Home, { HomeModalState } from "../../pages";
 import { LeadCompContent } from "./ModalBody/LeadCompContent";
 import { LeadTalkContent } from "./ModalBody/LeadTalkContent";
+import {
+  OnboardingContent,
+  OnboardingContentProps,
+} from "./ModalBody/OnboardingContent";
 
 export const HomeModal: FC<{
   open: HomeModalState;
   close: () => void;
   children?: React.ReactNode;
-}> = ({ open, close, children }) => {
+  data?: OnboardingContentProps;
+}> = ({ open, close, children, data }) => {
+  const [saved, setSave] = useState(false);
+  const setSaved = () => setSave(true);
+  const router = useRouter();
+
   if (open === HomeModalState.NOSHOW) return <></>;
+  if (saved) {
+    return (
+      <div
+        onClick={close}
+        style={{
+          background: "rgba(0,0,0,0.5)",
+          backdropFilter: "blur(4px)",
+          zIndex: "500",
+        }}
+        className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center"
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className=" rounded-3xl overflow-hidden relative w-[300px] md:w-[392px]"
+        >
+          <div className="px-6 text-center lg:px-10 py-8 relative flex flex-col items-center z-20 bg-white overflow-y-scroll myscrollbar">
+            <img
+              src="/images/check_icon.svg"
+              alt=""
+              className="w-20 h-20 md:w-[114px] md:h-[114px]"
+            />
+            <p className="text-[24px] md:text-[30px] text-center font-bold my-5 md:my-7">
+              Account Created!
+            </p>
+
+            <p className="text-center mb-8 ">
+              Checkout your profile to fill further detail information.
+            </p>
+            <div
+              onClick={() => router.push("/dashboard")}
+              className="text-primary-light font-medium cursor-pointer text-center"
+            >
+              <p>&#8594; Go to profile</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (open === HomeModalState.ONBOARDING && data) {
+    return (
+      <div
+        style={{
+          background: "rgba(0,0,0,0.5)",
+          backdropFilter: "blur(4px)",
+          zIndex: "500",
+        }}
+        className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center"
+      >
+        {/* dexktop */}
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="hidden md:block rounded-3xl overflow-hidden relative w-[554px]"
+        >
+          <div className="px-20 lg:px-24 xl:px-28 relative flex flex-col items-center z-20 bg-white p-8 overflow-y-scroll myscrollbar">
+            <img
+              src="/images/check_icon.svg"
+              alt=""
+              className="w-20 h-20 md:w-[114px] md:h-[114px]"
+            />
+            <p className="text-[24px] md:text-[32px] font-bold my-5 md:my-7">
+              Account Created!
+            </p>
+            <OnboardingContent data={data} setSaved={setSaved} />
+          </div>
+        </div>
+
+        {/* mobile */}
+        <div className="md:hidden flex flex-col justify-center w-full h-full bg-white px-4 py-7">
+          <img
+            src="/images/leadseries_logo_putih_2.svg"
+            alt=""
+            className="w-[100px] fixed left-4 top-7"
+          />
+          <img
+            src="/images/check_icon.svg"
+            alt=""
+            className="mx-auto w-20 h-20 my-8"
+          />
+          <p className="text-[24px] md:text-[32px] font-bold my-5 md:my-7 text-center">
+            Account Created!
+          </p>{" "}
+          <OnboardingContent data={data} setSaved={setSaved} />
+        </div>
+      </div>
+    );
+  }
   return (
     <div
       onClick={close}
@@ -33,7 +134,11 @@ export const HomeModal: FC<{
           >
             &#x2715;
           </div>
-          {open === HomeModalState.LEADCOMP ? <LeadCompContent /> : <LeadTalkContent />}
+          {open === HomeModalState.LEADCOMP ? (
+            <LeadCompContent />
+          ) : (
+            <LeadTalkContent />
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
+import Cookies from "js-cookie";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FieldWrapper } from "./FieldWrapper";
 
 export interface AccountFormProps {
@@ -8,10 +10,33 @@ export interface AccountFormProps {
 
 export const AccountForm: React.FC<{
   data: AccountFormProps;
-}> = ({ data }) => {
+  close: () => void;
+}> = ({ data, close }) => {
   const { register, handleSubmit } = useForm();
+
+  async function onSubmit(obj: any) {
+    const token = Cookies.get("token");
+    const t = toast.loading("changing your password...");
+    const res = await fetch("/api/dashboard/password", {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    toast.dismiss(t);
+    if (res.ok) {
+      toast.success("Success");
+      close();
+    } else {
+      const msg = await res.json();
+      toast.error(msg.message ?? "Oops, something went wrong");
+    }
+  }
+
   return (
-    <form action="">
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h4 className="font-bold text-primary-darkest text-lg mb-3">
         Change Password
       </h4>

@@ -51,12 +51,12 @@ export const SideBar: FC<{
         <div className="h-2" />
         {jobfairProfile.map((data, idx) => (
           <div key={`jobfairProfile-${idx}`} className="mb-2">
-            <h6 className="leading-3">{data.title}</h6>
+            <h6 className="leading-3 font-medium">{data.title}</h6>
             <a
-              href={"//" + data.link}
+              href={data.link}
               className="font-bold text-sm text-info-base underline"
             >
-              {data.filename}
+              {data.filename ?? "-"}
             </a>
           </div>
         ))}
