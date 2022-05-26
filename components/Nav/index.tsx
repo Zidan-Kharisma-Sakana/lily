@@ -22,7 +22,7 @@ export const Nav: FC<{
     <div id="nav" className={styles.nav}>
       {!!isHome && (
         <nav className="z-30 absolute items-stretch sm:items-center top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
-          <NavContent setOpenModal={setOpen} />
+          <NavContent isHome={isHome} setOpenModal={setOpen} />
         </nav>
       )}
       <div className="fixed top-0 left-0 w-full z-[25]">
@@ -48,12 +48,15 @@ export const Nav: FC<{
 const NavContent: FC<{
   setOpenModal: React.Dispatch<boolean>;
   isHome?: boolean;
-}> = ({ setOpenModal, isHome = true }) => {
+}> = ({ setOpenModal, isHome = false }) => {
   const r = useRouter();
   return (
     <>
       <img
-        onClick={() => scrollKe("home")}
+        onClick={() => {
+          if (!isHome) r.push("/#home");
+          else scrollKe("home");
+        }}
         className="w-[150px] h-[29px] md:w-[189px] md:h-[36px] cursor-pointer"
         src="/images/leadseries_logo_putih.png"
         alt="logo"

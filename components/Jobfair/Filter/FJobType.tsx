@@ -5,23 +5,23 @@ export const FJobType: FC = () => {
   return (
     <Multiselect
       title={"Job Type"}
-      section={"type"}
+      section={"employment_type"}
       items={[
         {
           text: "Full-time",
-          code: "ft",
+          code: "Full Time",
         },
         {
           text: "Part-time",
-          code: "pt",
+          code: "Part Time",
         },
         {
           text: "Internship",
-          code: "int",
+          code: "Intern",
         },
         {
           text: "Freelance",
-          code: "free",
+          code: "Freelance",
         },
       ]}
     />

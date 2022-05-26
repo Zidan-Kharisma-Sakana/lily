@@ -75,18 +75,16 @@ export const JobFairForm: React.FC<{
     if (!!file) {
       formData.append("cv", file);
     }
-    
-    console.log("E");
-    const res = await fetch("api/dashboard/jobfair/", {
+
+    const res = await fetch("http://localhost:8000/api/profile/jobfair/", {
       body: formData,
       headers: {
         Authorization: "Bearer " + token,
       },
-      method: "POST",
+      method: "PATCH",
     });
 
     const msg = await res.json();
-    console.log(msg);
 
     toast.dismiss(t);
     if (res.ok) {

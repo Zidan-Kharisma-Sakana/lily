@@ -10,23 +10,23 @@ export const FIndustry: FC = () => {
       items={[
         {
           text: "Computer and Technology",
-          code: "tech",
+          code: "Tech",
         },
         {
           text: "Education",
-          code: "ed",
+          code: "Education",
         },
         {
           text: "Entertainment",
-          code: "ent",
+          code: "Entertainment",
         },
         {
           text: "Finance and Economic",
-          code: "finec",
+          code: "Finance",
         },
         {
           text: "Manufacturing",
-          code: "manufac",
+          code: "Manufacturing",
         },
       ]}
     />

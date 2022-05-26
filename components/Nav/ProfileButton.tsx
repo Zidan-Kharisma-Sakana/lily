@@ -7,7 +7,6 @@ export const ProfileButton: FC = () => {
   const [onHover, setHover] = useState(false);
   const { user, logout } = useAuth();
   const r = useRouter();
-  console.log(user)
   if (!user)
     return (
       <>
@@ -27,6 +26,12 @@ export const ProfileButton: FC = () => {
     );
   return (
     <>
+      <h4
+        onClick={() => r.push("/dashboard")}
+        className="mb-6 cursor-pointer sm:hidden"
+      >
+        Dashboard
+      </h4>
       <h4 onClick={logout} className="mb-6 cursor-pointer sm:hidden">
         Logout
       </h4>
@@ -43,10 +48,22 @@ export const ProfileButton: FC = () => {
             onHover ? "h-auto pt-4" : "h-0"
           }`}
         >
+          <div className="h-1"></div>
+          <div
+            onClick={() => r.push("/dashboard")}
+            className="rounded-t-lg bg-[#3C1856] opacity-95 p-4 text-white"
+          >
+            <div></div>
+            <div className="flex gap-x-4 cursor-pointer font-medium">
+              <img src="/icons/user.svg" alt="" />
+              <p>Dashboard</p>
+            </div>
+          </div>
           <div
             onClick={logout}
-            className="rounded-lg bg-[#3C1856] opacity-95 p-4 text-white"
+            className="rounded-b-lg bg-[#3C1856] opacity-95 p-4 text-white"
           >
+            <div></div>
             <div className="flex gap-x-4 cursor-pointer font-medium">
               <img src="/icons/logout.svg" alt="" />
               <p>Log Out</p>
@@ -57,6 +74,14 @@ export const ProfileButton: FC = () => {
     </>
   );
 };
-function getFirstName(name: string) {
+export function getFirstName(name: string) {
   return name.split(" ")[0];
+}
+
+export function getLastName(name: string) {
+  return name.split(" ").reduce((acc, current, idx) => {
+    console.log(current, idx);
+    if (idx != 1) return `${acc} ${current}`;
+    else return current;
+  });
 }

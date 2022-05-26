@@ -13,7 +13,7 @@ export const SideBar: FC<{
   const { profile, account, jobfairProfile } = data;
 
   return (
-    <div className="w-full md:w-[250px] lg:w-[330px] xl:w-[361px]">
+    <div className="w-full md:w-[250px] lg:w-[330px] xl:w-1/3">
       <DashboardModal
         data={data}
         currentState={currentState}

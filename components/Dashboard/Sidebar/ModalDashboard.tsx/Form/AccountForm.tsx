@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { baseURL, baseURLFE } from "../../../../../utils/api";
 import { FieldWrapper } from "./FieldWrapper";
 
 export interface AccountFormProps {
@@ -15,23 +16,36 @@ export const AccountForm: React.FC<{
   const { register, handleSubmit } = useForm();
 
   async function onSubmit(obj: any) {
+    if (obj.new_password != obj.reenter_password) {
+      toast.error("reentered password didn't match");
+      return;
+    }
     const token = Cookies.get("token");
     const t = toast.loading("changing your password...");
-    const res = await fetch("/api/dashboard/password", {
+    const form = new FormData();
+    form.append("new_password", obj.new_password);
+    form.append("current_password", obj.old_password);
+    const res = await fetch(baseURLFE("auth/users/set_password/"), {
       method: "POST",
-      body: JSON.stringify(obj),
+      body: form,
       headers: {
-        "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
     });
+
     toast.dismiss(t);
     if (res.ok) {
       toast.success("Success");
       close();
     } else {
-      const msg = await res.json();
-      toast.error(msg.message ?? "Oops, something went wrong");
+      const data = await res.json();
+      for (var key in data) {
+        if (Array.isArray(data[key])) {
+          data[key].forEach((detail) => toast.error(detail));
+        } else {
+          toast.error(data[key]);
+        }
+      }
     }
   }
 
@@ -44,7 +58,7 @@ export const AccountForm: React.FC<{
       <FieldWrapper py="16">
         <input
           className="w-full text-ink-lighter placeholder:text-white sm:placeholder:text-ink-lighter"
-          {...register("old-password")}
+          {...register("old_password")}
           type="password"
           required
           placeholder="Old Password"
@@ -54,7 +68,7 @@ export const AccountForm: React.FC<{
       <FieldWrapper py="16">
         <input
           className="w-full text-ink-lighter placeholder:text-white sm:placeholder:text-ink-lighter"
-          {...register("new-password")}
+          {...register("new_password")}
           type="password"
           required
           placeholder="New Password"
@@ -64,7 +78,7 @@ export const AccountForm: React.FC<{
       <FieldWrapper py="16">
         <input
           className="w-full text-ink-lighter placeholder:text-white sm:placeholder:text-ink-lighter"
-          {...register("reenter-new-password")}
+          {...register("reenter_password")}
           type="password"
           required
           placeholder="Re-enter New Password"

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
+import toast from "react-hot-toast";
 
 export interface CompanyProfileProps {
   name: string;
@@ -22,15 +23,19 @@ export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
           alt={props.name + " logo"}
           className="w-[64px] h-[64px] sm:w-[100px] sm:h-[100px] md:w-[220px] md:h-[220px] bg-[#C4C4C4] rounded-lg"
         />
-        <div className="flex flex-col gap-y-2">
-          <div className="flex gap-x-2 items-baseline">
-            <img src="/icons/map-pin2.svg" alt="" className="w-4 h-4 translate-y-0.5" />
+        <div className="flex flex-col gap-y-2 mt-4">
+          <div className="flex gap-x-2 items-center">
+            <img src="/icons/map-pin2.svg" alt="" className="w-4 h-4 my-0.5" />
             <p>{props.location}</p>
           </div>
-          <div className="flex gap-x-2 items-baseline">
-            <img src="/icons/globe2.svg" alt="" className="w-4 h-4 translate-y-0.5" />
-            <p>{props.website}</p>
-          </div>
+          {props.location && (
+            <div className="flex gap-x-2 items-center">
+              <img src="/icons/globe2.svg" alt="" className="w-4 h-4 my-0.5" />
+              <a href={props.website} target="_blank" rel="noreferrer">
+                {props.website}
+              </a>
+            </div>
+          )}
         </div>
       </div>
       {/* contact :*/}
@@ -51,19 +56,23 @@ export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
         >
           <img src="/icons/facebook2.svg" alt="" />
         </a>
-        <a
-          className="block w-6 h-6"
-          target="_blank"
-          href={props.email}
-          rel="noreferrer"
+        <div
+        onClick={()=>{
+          navigator.clipboard.writeText(props.email)
+          toast.success("Copied to clipboard succesfully")
+        }}
+          className="block w-6 h-6 cursor-pointer"
         >
           <img src="/icons/mail2.svg" alt="" />
-        </a>
+        </div>
       </div>
       {/* about */}
       <div>
         <h4 className="font-bold text-base mb-3">About</h4>
-        <p>{props.about}</p>
+        <div
+          className="text-sm mb-3 flex flex-col gap-y-4 text-justify"
+          dangerouslySetInnerHTML={{ __html: props.about }}
+        />
       </div>
     </div>
   );

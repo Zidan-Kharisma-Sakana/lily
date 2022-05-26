@@ -1,21 +1,36 @@
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 
 export const FRemote: FC = () => {
   const [isRemote, setRemote] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    const mustRemote = String(router.query["mustRemote"]) === "true";
-    setRemote(mustRemote);
+    const remote_available =
+      String(router.query["remote_available"]) === "true";
+    setRemote(remote_available);
   }, [router]);
+
   const onClick = (isRemote: boolean) => {
     const queries = router.query;
+    let newQuery = {};
+    for (const key in queries) {
+      if (key !== "remote_available") {
+        newQuery = {
+          ...newQuery,
+          [key]: queries[key],
+        };
+      }
+    }
+    if (isRemote) {
+      newQuery = {
+        ...queries,
+        remote_available: String(isRemote),
+      };
+    }
+    console.log(newQuery);
     router.push(
       {
-        query: {
-          ...queries,
-          mustRemote: String(isRemote),
-        },
+        query: newQuery,
       },
       undefined,
       { scroll: false }

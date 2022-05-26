@@ -53,7 +53,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="relative">
-        <Nav />
+        <Nav isHome />
         <Hero />
       </header>
       <div className={`overflow-hidden `}>

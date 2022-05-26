@@ -8,6 +8,7 @@ import React, {
 import Router, { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { baseURLFE } from "../utils/api";
 
 const AuthContext = createContext<{
   isAuthenticated: boolean;
@@ -27,15 +28,16 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
   const [user, setUser] = useState(null);
   const r = useRouter();
   const retrieveUser = async (token: string) => {
-    const res = await fetch("api/getUser", {
+    const res = await fetch(baseURLFE("auth/users/me/"), {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
     });
     const data = await res.json();
     if (res.ok) {
+      console.log(data);
       setUser(data);
     } else {
-      toast.error(data.message ?? "Unknown Error", {
+      toast.error(data.detail ?? "Unknown Error", {
         duration: 5000,
       });
     }
@@ -44,7 +46,7 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get("token");
-      console.log("-------");
+      // console.log("-------");
       console.log(token);
       if (token) {
         retrieveUser(token);
@@ -66,8 +68,8 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
     toast.dismiss(t);
     const data = await res.json();
     if (res.ok) {
-      console.log(data)
-      Cookies.set('token', data.access, { expires: 3 })
+      console.log(data);
+      Cookies.set("token", data.access, { expires: 3 });
       retrieveUser(data.access);
     } else {
       toast.error(data?.message ?? "No Active Account Found", {

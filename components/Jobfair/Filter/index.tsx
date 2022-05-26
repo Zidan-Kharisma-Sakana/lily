@@ -22,7 +22,7 @@ export const MobileFilter: FC<{ shown: boolean; close: () => void }> = ({
         shown ? "" : "translate-x-full"
       }`}
     >
-      <div className="flex justify-between items-center font-bold text-lg my-8">
+      <div className="flex justify-between items-center font-bold text-lg mb-6 mt-16">
         <p>Filter</p>
         <img
           onClick={close}

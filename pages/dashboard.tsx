@@ -90,7 +90,7 @@ const Dashboard: NextPage = () => {
         {!!dashboardData && (
           <div className="md:flex md:justify-start lg:justify-between gap-x-6 2xl:justify-around">
             <SideBar data={dashboardData.UserInfo} />
-            <div className="w-full md:w-[450px] lg:w-[650px]">
+            <div className="w-full md:w-[450px] lg:w-[650px] xl:w-3/4">
               <section id="registered-events">
                 <h3 className="text-primary-darkest font-bold text-lg mb-3">
                   Registered Events
@@ -116,75 +116,4 @@ const Dashboard: NextPage = () => {
   );
 };
 
-export default Dashboard;
-
-const dummyData: UserData = {
-  UserInfo: {
-    profile: {
-      name: "Lanzhu Zhong",
-      phone: "08567681240",
-    },
-    account: {
-      email: "lanzhu@niji-high.jp",
-    },
-    jobfairProfile: [
-      {
-        title: "CV",
-        filename: "Lanzhu_Zhong_CV.pdf",
-        link: "",
-      },
-      {
-        title: "linkedin",
-        filename: "linkedin.com/lanzhu",
-        link: "linkedin.com/lanzhu",
-      },
-      {
-        title: "Website/Portfolio",
-        filename: "Lanzhu_Zhong_Portfolio.com",
-        link: "linkedin.com/",
-      },
-    ],
-  },
-  RegisteredEvents: [
-    {
-      event: "Event 1",
-      date: new Date(2022, 12, 11),
-    },
-    {
-      event: "Event 2",
-      date: new Date(2022, 12, 11),
-    },
-  ],
-  AppliedJobs: [
-    {
-      title: "Job Title",
-      company: {
-        name: "Company Name Here",
-        img: "",
-      },
-      location: "Remote",
-      type: "full-time",
-      applyTime: new Date(2022, 12, 11),
-    },
-    {
-      title: "Job Title",
-      company: {
-        name: "Company Name Here",
-        img: "",
-      },
-      location: "Remote",
-      type: "full-time",
-      applyTime: new Date(2022, 12, 11),
-    },
-    {
-      title: "Job Title",
-      company: {
-        name: "Company Name Here",
-        img: "",
-      },
-      location: "DKI Jakarta",
-      type: "full-time",
-      applyTime: new Date(2022, 12, 11),
-    },
-  ],
-};
+export default Dashboard

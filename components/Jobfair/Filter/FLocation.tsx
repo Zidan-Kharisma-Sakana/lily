@@ -10,23 +10,23 @@ export const FLocation: FC = () => {
       items={[
         {
           text: "Jakarta",
-          code: "JKT",
+          code: "Jakarta",
         },
         {
           text: "Medan",
-          code: "MED",
+          code: "Medan",
         },
         {
           text: "Yogyakarta",
-          code: "JOG",
+          code: "Yogyakarta",
         },
         {
           text: "Bandung",
-          code: "BDG",
+          code: "Bandung",
         },
         {
           text: "Surabaya",
-          code: "SBY",
+          code: "Surabaya",
         },
       ]}
     />

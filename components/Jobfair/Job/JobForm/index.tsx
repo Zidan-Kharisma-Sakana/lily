@@ -1,7 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import toast from "react-hot-toast";
+import { baseURLFE } from "../../../../utils/api";
 import { scrollKe, shortenName } from "../../../helper";
 import { JobProfileModalState } from "../JobDesc/JobProfile";
 import { JobFormModal } from "./JobFormModal";
@@ -22,6 +25,7 @@ export const JobFairForm: FC<{
   state: JobProfileModalState;
   setModal: React.Dispatch<JobProfileModalState>;
 }> = ({ data, apply, state, setModal }) => {
+  const id = useRouter().query["id"] ?? "";
   const [fname, setfname] = useState<string>("");
   const [lname, setlname] = useState<string>("");
   const [email, setemail] = useState<string>("");
@@ -33,7 +37,7 @@ export const JobFairForm: FC<{
 
   const onApply = () => {
     closeModal();
-    setfname(data?.firstname ?? "aaa");
+    setfname(data?.firstname ?? "");
     setlname(data?.lastname ?? "");
     setemail(data?.email ?? "");
     setPhone(data?.phone ?? "");
@@ -53,7 +57,7 @@ export const JobFairForm: FC<{
   };
 
   const [fileResume, setFileResume] = useState<File>();
-  const [fileCV, setFileCV] = useState<File>();
+  const [fileCL, setFileCL] = useState<File>();
 
   const onReject = (rejectedFiles: any, event: any) => {
     if (rejectedFiles.length > 1) {
@@ -91,7 +95,7 @@ export const JobFairForm: FC<{
       maxFiles: 1,
       maxSize: 5 * 1024 * 1024,
       onDropAccepted: (acceptedFiles, event) => {
-        setFileCV(acceptedFiles[0]);
+        setFileCL(acceptedFiles[0]);
         setcvname(acceptedFiles[0].name);
       },
       onDropRejected: onReject,
@@ -108,7 +112,39 @@ export const JobFairForm: FC<{
     linkedin: linkedin ?? "-",
     portfolio: portfolio ?? "-",
   };
-  const onSubmit = () => {
+  const onSubmit = async () => {
+    const token = Cookies.get("token");
+    const form = new FormData();
+    form.append("linkedin", linkedin);
+    form.append("portfolio_url", portfolio);
+    if (fileResume) {
+      form.append("cv", fileResume);
+    }
+    if (fileCL) {
+      form.append("cover_letter", fileCL);
+    }
+    toast.loading("Submitting your data");
+    const res = await fetch(baseURLFE(`api/jobs/${id}/apply/`), {
+      body: form,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      method: "POST",
+    });
+    const data = await res.json();
+    toast.dismiss();
+    if (res.ok) {
+      toast.success("Success");
+    } else {
+      console.log(data);
+      for (var key in data) {
+        if (Array.isArray(data[key])) {
+          data[key].forEach((detail) => toast.error(detail));
+        } else {
+          toast.error(data[key]);
+        }
+      }
+    }
     closeModal();
   };
   return (
@@ -260,12 +296,12 @@ export const JobFairForm: FC<{
                 <input {...inputPropsCV()} />
                 <div
                   className={`${
-                    !!fileCV || cvname
+                    !!fileCL || cvname
                       ? "border-2 border-green-base bg-green-lightest"
                       : "bg-white"
                   } w-full h-16 px-4 rounded-lg flex items-center`}
                 >
-                  {!!fileCV || cvname ? (
+                  {!!fileCL || cvname ? (
                     <div className="flex gap-x-2">
                       <img
                         src="/icons/file-green.svg"
@@ -294,7 +330,7 @@ export const JobFairForm: FC<{
                     </div>
                   )}
                 </div>
-                {!!fileCV || cvname ? (
+                {!!fileCL || cvname ? (
                   <p className="text-xs underline text-primary-base mt-2">
                     Change File
                   </p>

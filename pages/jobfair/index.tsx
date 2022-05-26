@@ -1,23 +1,72 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { JobCardProps } from "../../components/Dashboard";
 import { Footer } from "../../components/Footer";
 import { JobSearchDec } from "../../components/Jobfair/Bubbles/JobSearchDec";
 import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
+import { baseURLFE } from "../../utils/api";
 
 const JobfairPage: NextPage = () => {
-  const data = dummyData;
+  const [data, setData] = useState<JobCardProps[]>([]);
 
   const [shown, setShown] = useState<boolean>(false);
   const closeFilter = () => setShown(false);
   const openFilter = () => setShown(true);
+  const router = useRouter();
+  const query = router.query;
+  const fetchData = async (q: string) => {
+    const res = await fetch(baseURLFE(`api/jobs/?${q}`));
+    const data = await res.json();
+    if (res.ok) {
+      setData(
+        data.map((job) => {
+          return {
+            id: job.id,
+            location: job.location,
+            title: job.title,
+            type: job.employment_type,
+            company: {
+              id: job.owner.id,
+              img: job.owner.logo,
+              name: job.owner.name,
+            },
+          } as JobCardProps;
+        })
+      );
+    } else {
+      for (const key in data) {
+        data[key].forEach((message: string) =>
+          toast.error(`${key}: ${message}`)
+        );
+      }
+    }
+  };
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+    Object.keys(query).forEach((key) => {
+      const d = query[key];
+      console.log(d);
+      if (Array.isArray(d)) {
+        d.forEach((term) => {
+          if (!!term) searchParams.append(key, term);
+        });
+      } else if (!!query[key]) {
+        searchParams.append(key, String(query[key]));
+      }
+    });
+    console.log(searchParams.toString());
+    fetchData(searchParams.toString());
+  }, [query]);
 
   return (
-    <div>
+    <div className="max-w-[100vw] overflow-x-hidden">
       <Head>
         <title>Lead Series</title>
         <meta
@@ -29,9 +78,7 @@ const JobfairPage: NextPage = () => {
       <header className="relative">
         <Nav isHome={false} />
       </header>
-      <main
-        className={`my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px]`}
-      >
+      <main className={`relative my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px]`}>
         <JobSearchDec />
         <div className="w-full flex  mb-10 items-center justify-between">
           <h1 className="text-primary-darkest text-[32px] font-bold">

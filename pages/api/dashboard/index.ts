@@ -25,32 +25,32 @@ export default async function handler(
     try {
       const values = await Promise.all([promise1, promise2, promise3]);
       const jsons = await Promise.all(values.map((res) => res.json()));
-      console.log(jsons[0])
+      const usr = jsons[0];
 
       const userData = {
         UserInfo: [
           {
             title: "Curriculum Vitae (CV)",
-            filename: "Resume_.pdf",
-            link: "https://scele.cs.ui.ac.id/",
+            filename: usr.cv ? "CV.pdf" : "-",
+            link: usr.cv ?? "",
           },
           {
             title: "linkedin",
-            filename: "https://scele.cs.ui.ac.id/",
-            link: "https://scele.cs.ui.ac.id/",
+            filename: usr.linkedin,
+            link: usr.linkedin,
           },
           {
             title: "Website/Portfolio",
-            filename: "https://scele.cs.ui.ac.id/",
-            link: "https://scele.cs.ui.ac.id/",
+            filename: usr.portfolio_url,
+            link: usr.portfolio_url,
           },
         ],
         AppliedJobs: jsons[2].map((data: any) => {
           const job = data.job_opening;
           const isRemote = data.remote_available;
-
           const r = {
             applyTime: new Date(),
+            id: job.id,
             company: {
               name: job?.owner?.name ?? "",
               img: job?.owner?.logo,
@@ -59,7 +59,7 @@ export default async function handler(
             title: job?.title ?? "",
             type: job?.employment_type,
           };
-          return r
+          return r;
         }),
         RegisteredEvents: jsons[1].map((data: any) => {
           return {
@@ -68,9 +68,9 @@ export default async function handler(
           };
         }),
       };
-      res.status(200).json(userData)
+      res.status(200).json(userData);
     } catch (error) {
-      console.log(error)
+      // console.log(error);
       res.status(500).json({ message: error });
     }
   }

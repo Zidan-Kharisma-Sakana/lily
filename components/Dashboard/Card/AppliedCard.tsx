@@ -2,10 +2,12 @@
 import { FC } from "react";
 
 export interface JobCardProps {
+  id: string | number;
   title: string;
   company: {
     name: string;
     img: string;
+    id: string;
   };
   location: string;
   type: string;
@@ -16,7 +18,7 @@ export interface AppliedJobCardProps extends JobCardProps {
 }
 
 export const AppliedCard: FC<AppliedJobCardProps> = (props) => {
-  const applyTime = new Date(Date.parse(String(props.applyTime)))
+  const applyTime = new Date(Date.parse(String(props.applyTime)));
   return (
     <div className="glassCard flex w-full text-xs mb-3 gap-x-3 sm:gap-x-6 cursor-pointer">
       <img
