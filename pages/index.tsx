@@ -15,6 +15,8 @@ import { HomeModal } from "../components/Event/HomeModal";
 import { useRouter } from "next/router";
 import { OnboardingContentProps } from "../components/Event/ModalBody/OnboardingContent";
 
+import * as gtag from "../lib/ga";
+
 export enum HomeModalState {
   LEADCOMP = "LeadComp",
   LEADTALK = "LeadTalk",
@@ -34,6 +36,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     const isOnboarding = !!router.query["onboard"] ?? false;
     if (isOnboarding) setOpen(HomeModalState.ONBOARDING);
+
+    gtag.event({
+        action: 'homepage_visit',
+        category: 'general',
+    })
   }, [router]);
 
   const data: OnboardingContentProps = {
