@@ -28,6 +28,7 @@ export default async function handler(
       });
     });
 
+    // @ts-ignore
     const cv = data.files.cv as formidable.File;
     const cvData: Buffer = fs.readFileSync(cv.filepath);
 

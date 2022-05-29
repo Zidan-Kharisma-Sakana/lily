@@ -18,9 +18,19 @@ import {
   UserFormData,
 } from "../../../components/Jobfair/Job/JobForm";
 import { Nav } from "../../../components/Nav";
+import * as gtag from "../../../lib/ga";
 
 const JobPage: NextPage = () => {
   const [shown, setShown] = useState<boolean>(false);
+
+  useEffect(() => {
+    gtag.event({
+      action: 'jobfair_offer_visit',
+      category: 'general',
+      label: 'job_offer_company_name - job_offer_name'
+    })
+  }, [])
+
   return (
     <div>
       <Head>

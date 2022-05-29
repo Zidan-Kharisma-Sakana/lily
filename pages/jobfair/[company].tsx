@@ -12,10 +12,19 @@ import {
 import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
+import * as gtag from "../../lib/ga";
 
 const CompanyProfilePage: NextPage = () => {
   const data = dummyData;
   const companyData = companyDummyData;
+
+  useEffect(() => {
+    gtag.event({
+      action: 'jobfair_company_visit',
+      category: 'general',
+      label: companyData.name
+    })
+  }, [companyData])
 
   return (
     <div>

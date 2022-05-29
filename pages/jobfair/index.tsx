@@ -8,6 +8,7 @@ import { JobSearchDec } from "../../components/Jobfair/Bubbles/JobSearchDec";
 import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
+import * as gtag from "../../lib/ga";
 
 const JobfairPage: NextPage = () => {
   const data = dummyData;
@@ -15,6 +16,12 @@ const JobfairPage: NextPage = () => {
   const [shown, setShown] = useState<boolean>(false);
   const closeFilter = () => setShown(false);
   const openFilter = () => setShown(true);
+
+  useEffect(() => {
+    gtag.event({
+      action: 'jobfair_main_page_visit'
+    })
+  }, [])
 
   return (
     <div>
