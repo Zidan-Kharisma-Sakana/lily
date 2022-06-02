@@ -14,33 +14,52 @@ import { useEffect, useState } from "react";
 import { HomeModal } from "../components/Event/HomeModal";
 import { useRouter } from "next/router";
 import { OnboardingContentProps } from "../components/Event/ModalBody/OnboardingContent";
+import { useAuth } from "../context/auth";
 
 export enum HomeModalState {
   LEADCOMP = "LeadComp",
   LEADTALK = "LeadTalk",
   NOSHOW = "NOSHOW",
   ONBOARDING = "Account Created!",
+  REGISTERED = "Registered",
 }
 
 const Home: NextPage = () => {
   const [open, setOpen] = useState<HomeModalState>(HomeModalState.NOSHOW);
   const router = useRouter();
+  const { user } = useAuth();
+  const [dataOnboard, setDataOnBoard] = useState<OnboardingContentProps>({
+    email: "",
+  });
+  useEffect(() => {
+    const isOnboarding = !!router.query["onboard"] ?? false;
+    if (isOnboarding) setOpen(HomeModalState.ONBOARDING);
+
+    if (!!user && isOnboarding) {
+      if (!!user.full_name && !!user.phone) {
+        router.push("/");
+      } else {
+        setDataOnBoard({
+          email: user.email,
+        });
+        setOpen(HomeModalState.ONBOARDING);
+      }
+    }
+  }, [user, router]);
+
   function openLeadComp() {
     setOpen(HomeModalState.LEADCOMP);
   }
   function openLeadTalk() {
     setOpen(HomeModalState.LEADTALK);
   }
+  function openSuccess() {
+    setOpen(HomeModalState.REGISTERED);
+  }
   useEffect(() => {
     const isOnboarding = !!router.query["onboard"] ?? false;
     if (isOnboarding) setOpen(HomeModalState.ONBOARDING);
   }, [router]);
-
-  const data: OnboardingContentProps = {
-    fullname: "...",
-    email: "aaa@gmail.com",
-    phone: "",
-  };
 
   return (
     <div>
@@ -65,8 +84,9 @@ const Home: NextPage = () => {
         </main>
       </div>
       <HomeModal
-        data={data}
+        data={dataOnboard}
         open={open}
+        onSuccess={openSuccess}
         close={() => setOpen(HomeModalState.NOSHOW)}
       />
       <FAQ />

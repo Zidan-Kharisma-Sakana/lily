@@ -19,19 +19,31 @@ export interface AppliedJobCardProps extends JobCardProps {
 
 export const AppliedCard: FC<AppliedJobCardProps> = (props) => {
   const applyTime = new Date(Date.parse(String(props.applyTime)));
+  console.log(props);
   return (
-    <div className="glassCard flex w-full text-xs mb-3 gap-x-3 sm:gap-x-6 cursor-pointer">
+    <div
+      onClick={() => window.open(`/jobfair/job/${props.id}`)}
+      className="glassCard flex w-full text-xs mb-3 gap-x-3 sm:gap-x-6 cursor-pointer"
+    >
       <img
-        className="w-[45px] h-[45px] sm:w-[72px] sm:h-[72px] md:w-[96px] md:h-[96px] rounded-lg bg-[#C4C4C4]"
+        onClick={() => window.open(`/jobfair/${props.company.id}`)}
+        className=" w-[45px] h-[45px] sm:w-[72px] sm:h-[72px] md:w-[96px] md:h-[96px] rounded-lg bg-[#C4C4C4]"
         src={props.company.img}
         alt={props.company.name + " logo"}
       />
+
       <div className="w-full flex flex-col gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base">
-        {!!props.applyTime && <p>Applied on {applyTime.toUTCString()}</p>}
+        {/* {!!props.applyTime && <p>Applied on {applyTime.toUTCString()}</p>} */}
         <h4 className="font-bold text-sm sm:text-base md:text-lg">
           {props.title}
         </h4>
-        <h6>{props.company.name}</h6>
+        <a
+          onClick={(e) => e.stopPropagation()}
+          href={"/jobfair/" + props.company.id}
+          target="_blank" rel="noreferrer"
+        >
+          <h6>{props.company.name}</h6>
+        </a>
         <div className="md:flex justify-between items-center">
           <div className="w-1/2 flex gap-x-2 mb-1 lg:gap-x-2.5 items-center">
             <img

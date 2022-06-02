@@ -65,7 +65,7 @@ const JobPage: NextPage = ({ jobData, relatedData }) => {
   return (
     <div>
       <Head>
-        <title>Lead Series</title>
+        <title>Lead Series Job Opening</title>
         <meta
           name="description"
           content="A virtual event that aims to bring insights and practical knowledge for youth to develop their leadership."

@@ -18,7 +18,7 @@ export const EventCard: FC<EventCardProps> = (props) => {
         <img
           src={props.url ?? "/images/event_default.jpg"}
           alt="event"
-          className="hidden md:block mb-4"
+          className="hidden md:block mb-4 w-full"
         />
         <h6 className="font-bold text-[#724182] text-lg">{props.title}</h6>
         <div className="flex gap-x-2 my-2">
@@ -34,20 +34,6 @@ export const EventCard: FC<EventCardProps> = (props) => {
 
 const Content: FC<EventCardProps> = (props) => {
   switch (props.status) {
-    case "REGISTRATION":
-      return (
-        <div className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
-          <h6 className="text-[#724182]">Register Here</h6>
-        </div>
-      );
-    case "CLOSED":
-      return (
-        <div className="bg-[#E3E5E6] cursor-not-allowed py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full md:absolute bottom-0 left-0">
-          <h6 style={{ color: "rgba(151, 156, 158, 1)" }}>
-            Registration Closed
-          </h6>
-        </div>
-      );
     case "LEADCOMP":
       return (
         <div

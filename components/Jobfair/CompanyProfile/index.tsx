@@ -17,7 +17,7 @@ export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
   return (
     <div className="glassCardNoPad w-full p-6 text-xs relative z-5">
       {/* image and profil */}
-      <div className="w-full fle xmd:flex-col gap-4">
+      <div className="w-full flex md:flex-col gap-4">
         <img
           src={props.logo}
           alt={props.name + " logo"}
@@ -28,7 +28,7 @@ export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
             <img src="/icons/map-pin2.svg" alt="" className="w-4 h-4 my-0.5" />
             <p>{props.location}</p>
           </div>
-          {props.location && (
+          {props.website && (
             <div className="flex gap-x-2 items-center">
               <img src="/icons/globe2.svg" alt="" className="w-4 h-4 my-0.5" />
               <a href={props.website} target="_blank" rel="noreferrer">
@@ -59,7 +59,7 @@ export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
         <div
         onClick={()=>{
           navigator.clipboard.writeText(props.email)
-          toast.success("Copied to clipboard succesfully")
+          toast.success("copied to clipboard")
         }}
           className="block w-6 h-6 cursor-pointer"
         >

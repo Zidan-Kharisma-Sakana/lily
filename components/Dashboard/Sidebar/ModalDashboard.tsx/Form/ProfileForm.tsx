@@ -40,7 +40,7 @@ export const ProfileForm: React.FC<{
     toast.dismiss(t);
     if (res.ok) {
       toast.success("Success");
-      close();
+      location.reload()
     } else {
       const msg = await res.json();
       toast.error(msg.message ?? "Oops, something went wrong");

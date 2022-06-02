@@ -5,7 +5,7 @@ import { useDropzone } from "react-dropzone";
 import { shortenName } from "../../../../helper";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-import { baseURL } from "../../../../../utils/api";
+import { baseURL, baseURLFE } from "../../../../../utils/api";
 
 export interface JobFairFormProps {
   title: string;
@@ -32,7 +32,7 @@ export const JobFairForm: React.FC<{
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "application/pdf": [".pdf"], "application/zip": [".zip"] },
     maxFiles: 1,
-    maxSize: 5 * 1024 * 1024,
+    maxSize: 10 * 1024 * 1024,
     onDropAccepted: (acceptedFiles, event) => {
       setFile(acceptedFiles[0]);
       setFileName(acceptedFiles[0].name);
@@ -45,7 +45,7 @@ export const JobFairForm: React.FC<{
         rejectedFiles[0].errors.forEach((err) => {
           switch (err.code) {
             case "file-too-large":
-              return toast.error("File too large, maximum size is 5 mb");
+              return toast.error("File too large, maximum size is 10 mb");
             case "file-invalid-type":
               return toast.error(
                 "Please submit file with extensions of .pdf or .zip"
@@ -70,29 +70,30 @@ export const JobFairForm: React.FC<{
     const token = Cookies.get("token");
     const t = toast.loading("changing your profile...");
     const formData = new FormData();
-    formData.append("linkedin", data.linkedin);
-    formData.append("portfolio_url", data.portfolio);
-    if (!!file) {
-      formData.append("cv", file);
-    }
+    if (!!data.linkedin) formData.append("linkedin", data.linkedin);
+    if (!!data.portfolio) formData.append("portfolio_url", data.portfolio);
+    if (!!file) formData.append("cv", file);
 
-    const res = await fetch("http://localhost:8000/api/profile/jobfair/", {
+    const res = await fetch(baseURLFE("api/profile/jobfair/"), {
       body: formData,
       headers: {
         Authorization: "Bearer " + token,
       },
       method: "PATCH",
     });
-
     const msg = await res.json();
-
     toast.dismiss(t);
     if (res.ok) {
       toast.success("Success");
-      close();
+      location.reload()
     } else {
-      const msg = await res.json();
-      toast.error(msg.message ?? "Oops, something went wrong");
+      for (var key in msg) {
+        if (Array.isArray(msg[key])) {
+          msg[key].forEach((detail: string) => toast.error(detail));
+        } else {
+          toast.error(msg[key]);
+        }
+      }
     }
     setLoad(false);
   };
@@ -127,7 +128,7 @@ export const JobFairForm: React.FC<{
         <input
           onKeyDown={checkChanges}
           className="w-full"
-          {...register("linkedin", { required: true })}
+          {...register("linkedin")}
           type="text"
         />
       </FieldWrapper>
@@ -136,7 +137,7 @@ export const JobFairForm: React.FC<{
         <input
           onKeyDown={checkChanges}
           className="w-full"
-          {...register("portfolio", { required: true })}
+          {...register("portfolio")}
           type="text"
         />
       </FieldWrapper>

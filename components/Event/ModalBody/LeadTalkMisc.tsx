@@ -52,3 +52,20 @@ export const LeadTalkSpeaker: FC<LTSpeakerProps> = ({ name, src, job }) => {
     </div>
   );
 };
+
+export const EventContent: FC<{
+  title: string;
+  tanggal: string;
+  text: string;
+}> = ({ title, tanggal, text }) => {
+  return (
+    <div className="mb-6">
+      <h5 className="font-bold text-lg">{title}</h5>
+      <div className="my-2 flex text-primary-base font-bold text-xs">
+        <img src="/icons/calendar_2.svg" alt="" className="mr-2" />
+        <p>{tanggal}</p>
+      </div>
+      <p className="font-medium">{text}</p>
+    </div>
+  );
+};

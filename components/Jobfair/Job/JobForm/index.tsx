@@ -139,7 +139,7 @@ export const JobFairForm: FC<{
       console.log(data);
       for (var key in data) {
         if (Array.isArray(data[key])) {
-          data[key].forEach((detail) => toast.error(detail));
+          data[key].forEach((detail: string) => toast.error(detail));
         } else {
           toast.error(data[key]);
         }

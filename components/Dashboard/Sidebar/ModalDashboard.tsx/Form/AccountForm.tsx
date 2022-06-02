@@ -41,7 +41,7 @@ export const AccountForm: React.FC<{
       const data = await res.json();
       for (var key in data) {
         if (Array.isArray(data[key])) {
-          data[key].forEach((detail) => toast.error(detail));
+          data[key].forEach((detail: string) => toast.error(detail));
         } else {
           toast.error(data[key]);
         }

@@ -9,24 +9,36 @@ export const FLocation: FC = () => {
       section={"location"}
       items={[
         {
-          text: "Jakarta",
-          code: "Jakarta",
+          text: "DKI Jakarta",
+          code: "DKI Jakarta",
         },
         {
-          text: "Medan",
-          code: "Medan",
+          text: "Jawa Barat",
+          code: "Jawa Barat",
         },
         {
-          text: "Yogyakarta",
-          code: "Yogyakarta",
+          text: "Jawa Timur",
+          code: "Jawa Timur",
         },
         {
-          text: "Bandung",
-          code: "Bandung",
+          text: "Jawa Tengah",
+          code: "Jawa Tengah",
         },
         {
-          text: "Surabaya",
-          code: "Surabaya",
+          text: "DI Yogyakarta",
+          code: "DI Yogyakarta",
+        },
+        {
+          text: "Sumatera",
+          code: "Sumatera",
+        },
+        {
+          text: "Remote",
+          code: "Remote",
+        },
+        {
+          text: "Others",
+          code: "Others",
         },
       ]}
     />

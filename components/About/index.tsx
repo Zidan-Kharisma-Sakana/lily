@@ -47,7 +47,7 @@ export const About: FC = () => {
         <SectionTitle
           right="in Number"
           row
-          sub="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec sem sed."
+          sub="From Indonesia to the world, we’ve gathered up with your favorite countries as well as major leading companies globally!"
         />
         <div className="flex flex-wrap gap-y-4 md:gap-y-8 justify-between items-stretch mt-8">
           <StatCard url="/icons/people.png" num={7000} title="Participants" />

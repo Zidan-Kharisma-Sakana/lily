@@ -12,9 +12,10 @@ import {
 export const HomeModal: FC<{
   open: HomeModalState;
   close: () => void;
+  onSuccess: () => void;
   children?: React.ReactNode;
   data?: OnboardingContentProps;
-}> = ({ open, close, children, data }) => {
+}> = ({ open, close, children, data, onSuccess }) => {
   const [saved, setSave] = useState(false);
   const setSaved = () => setSave(true);
   const router = useRouter();
@@ -51,7 +52,7 @@ export const HomeModal: FC<{
               Checkout your profile to fill further detail information.
             </p>
             <div
-              onClick={() => router.push("/dashboard")}
+              onClick={() => location.replace("/dashboard")}
               className="text-primary-light font-medium cursor-pointer text-center"
             >
               <p>&#8594; Go to profile</p>
@@ -61,7 +62,47 @@ export const HomeModal: FC<{
       </div>
     );
   }
-  if (open === HomeModalState.ONBOARDING && data) {
+  if (open === HomeModalState.REGISTERED) {
+    return (
+      <div
+        onClick={close}
+        style={{
+          background: "rgba(0,0,0,0.5)",
+          backdropFilter: "blur(4px)",
+          zIndex: "500",
+        }}
+        className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center"
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className=" rounded-3xl overflow-hidden relative w-[340px] md:w-[392px]"
+        >
+          <div className="py-16 px-4 text-center bg-white relative">
+          <div
+            onClick={close}
+            className="text-black text-3xl font-black absolute right-7 top-7 cursor-pointer"
+          >
+            &#x2715;
+          </div>
+            <img
+              src="/images/check_icon.svg"
+              alt=""
+              className="w-[114px] h-[114px] mx-auto"
+            />
+            <p className="mt-9 mb-5 font-bold text-2xl md:text-[32px]">
+              You&apos;re Registered!
+            </p>
+            <p>We have sent you an email for proof of</p>
+            <p> registration and more information!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (open === HomeModalState.ONBOARDING) {
+    if (!data?.email) return <></>;
     return (
       <div
         style={{
@@ -78,13 +119,13 @@ export const HomeModal: FC<{
           }}
           className="hidden md:block rounded-3xl overflow-hidden relative w-[554px]"
         >
-          <div className="px-20 lg:px-24 xl:px-28 relative flex flex-col items-center z-20 bg-white p-8 overflow-y-scroll myscrollbar">
+          <div className="px-20 lg:px-24 relative flex flex-col items-center z-20 bg-white p-8 overflow-y-scroll myscrollbar">
             <img
               src="/images/check_icon.svg"
               alt=""
               className="w-20 h-20 md:w-[114px] md:h-[114px]"
             />
-            <p className="text-[24px] md:text-[32px] font-bold my-5 md:my-7">
+            <p className="text-[24px] md:text-[32px] font-bold my-5 md:my-7 text-center">
               Account Created!
             </p>
             <OnboardingContent data={data} setSaved={setSaved} />
@@ -137,7 +178,7 @@ export const HomeModal: FC<{
           {open === HomeModalState.LEADCOMP ? (
             <LeadCompContent />
           ) : (
-            <LeadTalkContent />
+            <LeadTalkContent openSuccess={onSuccess} />
           )}
         </div>
       </div>

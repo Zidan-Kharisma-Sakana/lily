@@ -54,6 +54,7 @@ export default async function handler(
             company: {
               name: job?.owner?.name ?? "",
               img: job?.owner?.logo,
+              id: job?.owner?.id,
             },
             location: job?.location ?? "",
             title: job?.title ?? "",

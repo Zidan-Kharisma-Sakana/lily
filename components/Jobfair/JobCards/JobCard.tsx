@@ -24,12 +24,13 @@ export const JobCard: FC<JobCardProps> = (props) => {
           <a
             onClick={(e) => e.stopPropagation()}
             href={"/jobfair/job/" + props.id}
+            target="_blank" rel="noreferrer"
           >
             <h4 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">
               {props.title}
             </h4>
           </a>
-          <h6 onClick={(e) => e.stopPropagation()}>
+          <h6 className="inline" onClick={(e) => e.stopPropagation()}>
             <a className="" href={"/jobfair/" + props.company.id}>
               {props.company.name}
             </a>

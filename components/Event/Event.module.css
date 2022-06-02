@@ -18,9 +18,9 @@
 
 @media (min-width: 768px) {
   .eventcard {
-    width: 320px;
+    width: 25%;
+    max-width: 400px;
     height: 498px;
-    margin-right: 32px;
     margin-bottom: 0px;
   }
 }

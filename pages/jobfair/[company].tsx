@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { JobCardProps } from "../../components/Dashboard";
@@ -15,11 +15,10 @@ import { Nav } from "../../components/Nav";
 import { baseURLFE } from "../../utils/api";
 
 const CompanyProfilePage: NextPage = ({ jobData, companyData }) => {
-  console.log(jobData);
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
       <Head>
-        <title>Lead Series</title>
+        <title>Lead Series Company</title>
         <meta
           name="description"
           content="A virtual event that aims to bring insights and practical knowledge for youth to develop their leadership."
@@ -30,7 +29,7 @@ const CompanyProfilePage: NextPage = ({ jobData, companyData }) => {
         <Nav isHome={false} />
       </header>
       <main
-        className={`max-w-screen overflow-x-hidden  relative py-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] `}
+        className={`max-w-screen overflow-x-hidden  relative py-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] min-h-[80vh]`}
       >
         <JobSearchDec />
 
@@ -84,8 +83,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         type: job.employment_type,
       } as JobCardProps;
     });
-
-    console.log(jobData);
 
     return {
       props: {

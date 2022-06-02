@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { baseURLFE } from "../../utils/api";
 import { AuthDec } from "./AuthDec";
 import { AuthBox, AuthLayout } from "./AuthLayout";
 import { AuthModal } from "./AuthModal";
@@ -10,6 +12,7 @@ import { CheckYourMail } from "./CheckYourMail";
 export const SignUpForm: FC = () => {
   const r = useRouter();
   const [open, setOpen] = useState(false);
+  const [auth_url, setAuth_url] = useState("");
   function close() {
     setOpen(false);
   }
@@ -32,6 +35,26 @@ export const SignUpForm: FC = () => {
       toast.error(`Error: ${data.message}`);
     }
   }
+
+  useEffect(() => {
+    const getURL = async () => {
+      const res = await fetch(
+        baseURLFE(
+          "auth/o/google-oauth2/?redirect_uri=http://localhost:3000/processGoogle"
+        ),
+        {
+          credentials: "include",
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        console.log(res.headers);
+        const url = data.authorization_url;
+        setAuth_url(url);
+      }
+    };
+    getURL();
+  }, []);
   return (
     <AuthLayout>
       <AuthModal open={open} close={close}>
@@ -83,6 +106,13 @@ export const SignUpForm: FC = () => {
             </button>
           </div>
         </form>
+        <a
+          href={auth_url}
+          className="block w-full relative rounded-[48px] cursor-pointer py-4 border border-[#E3E5E6] mt-5 text-center text-ink-darkest font-medium"
+        >
+          <img src="/icons/Google.svg" alt="" className="absolute left-4" />
+          <p>Continue with Google</p>
+        </a>
         <p className="text-black font-semibold text-center mt-4 lg:mt-5 mb-10 md:mb-0">
           Have an account?
           <span

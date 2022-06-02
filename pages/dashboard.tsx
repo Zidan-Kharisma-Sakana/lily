@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
@@ -25,6 +26,7 @@ interface UserData {
 const Dashboard: NextPage = () => {
   const { user } = useAuth();
   const [dashboardData, setData] = useState<UserData>();
+  const router = useRouter();
 
   const retrieveData = async (token: string) => {
     const res = await fetch("api/dashboard", {
@@ -61,13 +63,14 @@ const Dashboard: NextPage = () => {
   };
 
   useEffect(() => {
-    async function loadUserFromCookies() {
-      const token = Cookies.get("token");
+    async function loadUserFromCookies(token: string) {
       if (token) {
         retrieveData(token);
       }
     }
-    if (user) loadUserFromCookies();
+    const token = Cookies.get("token");
+    if (!token) router.push("/sign-in");
+    if (user && token) loadUserFromCookies(token);
   }, [user]);
 
   return (
@@ -116,4 +119,4 @@ const Dashboard: NextPage = () => {
   );
 };
 
-export default Dashboard
+export default Dashboard;

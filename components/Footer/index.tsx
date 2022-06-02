@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
 
@@ -26,6 +27,11 @@ export const Footer: FC = () => {
         </ul>
       </section>
       <section id="footer-contact">
+        <h6 className="font-bold">Page</h6>
+        <div className="mt-2 mb-8">
+          <a href="/terms-of-service">Term of Service</a>
+        </div>
+
         <h6 className="font-bold mb-2">Contact Us</h6>
         <div className="flex">
           <img className="mr-4 cursor-pointer" src="/icons/mail.svg" alt="" />

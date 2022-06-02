@@ -25,7 +25,7 @@ const JobfairPage: NextPage = () => {
     const data = await res.json();
     if (res.ok) {
       setData(
-        data.map((job) => {
+        data.map((job: any) => {
           return {
             id: job.id,
             location: job.location,
@@ -68,7 +68,7 @@ const JobfairPage: NextPage = () => {
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
       <Head>
-        <title>Lead Series</title>
+        <title>Lead Series Job Fair</title>
         <meta
           name="description"
           content="A virtual event that aims to bring insights and practical knowledge for youth to develop their leadership."
@@ -78,7 +78,9 @@ const JobfairPage: NextPage = () => {
       <header className="relative">
         <Nav isHome={false} />
       </header>
-      <main className={`relative my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px]`}>
+      <main
+        className={`relative my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] min-h-[80vh]`}
+      >
         <JobSearchDec />
         <div className="w-full flex  mb-10 items-center justify-between">
           <h1 className="text-primary-darkest text-[32px] font-bold">

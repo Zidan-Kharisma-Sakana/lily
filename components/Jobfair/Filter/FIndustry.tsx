@@ -9,24 +9,28 @@ export const FIndustry: FC = () => {
       section={"industry"}
       items={[
         {
-          text: "Computer and Technology",
-          code: "Tech",
+          text: "FMCG",
+          code: "FMCG",
         },
         {
-          text: "Education",
-          code: "Education",
-        },
-        {
-          text: "Entertainment",
-          code: "Entertainment",
-        },
-        {
-          text: "Finance and Economic",
+          text: "Finance",
           code: "Finance",
         },
         {
-          text: "Manufacturing",
-          code: "Manufacturing",
+          text: "Consulting",
+          code: "Consulting",
+        },
+        {
+          text: "Creative",
+          code: "Creative",
+        },
+        {
+          text: "Startups",
+          code: "Startups",
+        },
+        {
+          text: "Others",
+          code: "Others",
         },
       ]}
     />

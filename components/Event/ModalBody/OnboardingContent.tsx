@@ -1,28 +1,46 @@
 /* eslint-disable @next/next/no-img-element */
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export interface OnboardingContentProps {
-  fullname: string;
   email: string;
-  phone: string;
 }
 export const OnboardingContent: FC<{
   data: OnboardingContentProps;
   setSaved: () => void;
-}> = ({ data: { email, fullname, phone }, setSaved }) => {
+}> = ({ data: { email }, setSaved }) => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      name: fullname,
+      full_name: "",
       email: email,
       phone: "",
     },
   });
 
-  const onSubmit = (e: any) => {
-    setSaved();
-  };
+  async function onSubmit(obj: any) {
+    const token = Cookies.get("token");
+    const t = toast.loading("changing your profile...");
+    const res = await fetch("/api/dashboard/profile", {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    const msg = await res.json();
+    toast.dismiss(t);
+    if (res.ok) {
+      console.log(msg);
+      toast.success("Success");
+      setSaved();
+    } else {
+      toast.error(msg.message ?? "Oops, something went wrong");
+    }
+  }
 
   return (
     <form className="w-full" onSubmit={handleSubmit(onSubmit)} action="">
@@ -31,7 +49,7 @@ export const OnboardingContent: FC<{
         <input
           className="rounded-lg border p-3 text-xs md:p-4 text-ink-lighter w-full"
           type="text"
-          {...register("name")}
+          {...register("full_name")}
           required
         />
       </div>
@@ -42,6 +60,7 @@ export const OnboardingContent: FC<{
           type="email"
           {...register("email")}
           required
+          disabled
         />
       </div>
       <div className="mb-8 w-full">
