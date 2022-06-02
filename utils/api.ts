@@ -14,7 +14,7 @@ export const poster = (url: string, req: NextApiRequest): Promise<Response> => {
 };
 
 export const analytics = async (eventId: number) => {
-  return await fetch(baseURL(`api/statistic/${eventId}/`), {
+  return await fetch(`${process.env.NEXT_PUBLIC_BE_ENDPOINT}/api/statistic/${eventId}/`, {
     method: 'GET'
   })
 }
