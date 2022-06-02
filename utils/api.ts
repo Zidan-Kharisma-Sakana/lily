@@ -2,7 +2,7 @@ import Axios, { AxiosInstance } from "axios";
 import { NextApiRequest } from "next";
 
 export const baseURL = (url: string) => `${process.env.BE_ENDPOINT}/${url}`;
-export const baseURLFE = (url: string) => `http://localhost:8000/${url}`;
+export const baseURLFE = (url: string) => `https://api-staging.leadseries.id/${url}`;
 
 export const poster = (url: string, req: NextApiRequest): Promise<Response> => {
   return fetch(baseURL(url), {
