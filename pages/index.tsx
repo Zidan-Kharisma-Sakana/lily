@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { HomeModal } from "../components/Event/HomeModal";
 import { useRouter } from "next/router";
 import { OnboardingContentProps } from "../components/Event/ModalBody/OnboardingContent";
+import {analytics} from "../utils/api";
 
 export enum HomeModalState {
   LEADCOMP = "LeadComp",
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     const isOnboarding = !!router.query["onboard"] ?? false;
     if (isOnboarding) setOpen(HomeModalState.ONBOARDING);
+    analytics(1).catch();
   }, [router]);
 
   const data: OnboardingContentProps = {

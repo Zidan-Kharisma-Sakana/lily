@@ -13,6 +13,12 @@ export const poster = (url: string, req: NextApiRequest): Promise<Response> => {
   });
 };
 
+export const analytics = async (eventId: number) => {
+  return await fetch(baseURL(`api/statistic/${eventId}/`), {
+    method: 'GET'
+  })
+}
+
 export const patcher = (
   url: string,
   req: NextApiRequest,
