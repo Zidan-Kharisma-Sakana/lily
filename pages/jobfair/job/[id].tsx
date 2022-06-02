@@ -27,8 +27,12 @@ import {
 } from "../../../components/Nav/ProfileButton";
 import { useAuth } from "../../../context/auth";
 import { baseURLFE } from "../../../utils/api";
-
-const JobPage: NextPage = ({ jobData, relatedData }) => {
+interface JobProps {
+  jobData: any;
+  relatedData: any;
+}
+const JobPage: NextPage = (props) => {
+  const { jobData, relatedData } = props as JobProps;
   const { user } = useAuth();
   const [userData, setUserData] = useState<UserFormData | null>(null);
 
@@ -103,7 +107,7 @@ const JobPage: NextPage = ({ jobData, relatedData }) => {
 };
 export default JobPage;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   const id = context?.params?.id ?? "";
   const p1 = fetch(baseURLFE(`api/jobs/${id}/`));
   const p2 = fetch(baseURLFE(`api/jobs/${id}/related/`));

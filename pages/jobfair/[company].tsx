@@ -14,7 +14,13 @@ import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
 import { baseURLFE } from "../../utils/api";
 
-const CompanyProfilePage: NextPage = ({ jobData, companyData }) => {
+interface CompanyInterface {
+  jobData: any;
+  companyData: any;
+}
+
+const CompanyProfilePage: NextPage = (props) => {
+  const { jobData, companyData } = props as CompanyInterface;
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
       <Head>
@@ -53,7 +59,7 @@ const CompanyProfilePage: NextPage = ({ jobData, companyData }) => {
 };
 export default CompanyProfilePage;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   const id = context?.params?.company ?? "";
   const p1 = await fetch(baseURLFE(`api/company/${id}/`));
   const data = await p1.json();
@@ -70,7 +76,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       website: data.website,
     };
 
-    const jobData: JobCardProps[] = data.openings.map((job) => {
+    const jobData: JobCardProps[] = data.openings.map((job: any) => {
       return {
         company: {
           img: data.logo,

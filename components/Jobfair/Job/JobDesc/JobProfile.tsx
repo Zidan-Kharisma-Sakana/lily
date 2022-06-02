@@ -8,7 +8,7 @@ export interface JobProfileProps {
   Job: JobCardProps;
   JobAbout: string;
   JobActivity: string;
-  JobLooking: string[];
+  JobLooking: string;
   UserForm: UserFormData | null;
 }
 
