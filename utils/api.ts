@@ -1,8 +1,9 @@
 import Axios, { AxiosInstance } from "axios";
 import { NextApiRequest } from "next";
 
-export const baseURL = (url: string) => `${process.env.BE_ENDPOINT}/${url}`;
-export const baseURLFE = (url: string) => `https://api-staging.leadseries.id/${url}`;
+export const baseURL = (url: string) => `${process.env.NEXT_PUBLIC_BE_ENDPOINT}/${url}`;
+export const baseURLFE = (url: string) =>
+  `${process.env.NEXT_PUBLIC_BE_ENDPOINT}/${url}`;
 
 export const poster = (url: string, req: NextApiRequest): Promise<Response> => {
   return fetch(baseURL(url), {
@@ -12,6 +13,15 @@ export const poster = (url: string, req: NextApiRequest): Promise<Response> => {
     },
     method: "POST",
   });
+};
+
+export const analytics = async (eventId: number) => {
+  return await fetch(
+    `${process.env.NEXT_PUBLIC_BE_ENDPOINT}/api/statistic/${eventId}/`,
+    {
+      method: "GET",
+    }
+  );
 };
 
 export const patcher = (

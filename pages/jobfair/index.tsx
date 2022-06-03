@@ -11,6 +11,7 @@ import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
 import { baseURLFE } from "../../utils/api";
+import {analytics} from "../../utils/api";
 
 const JobfairPage: NextPage = () => {
   const [data, setData] = useState<JobCardProps[]>([]);
@@ -64,6 +65,10 @@ const JobfairPage: NextPage = () => {
     console.log(searchParams.toString());
     fetchData(searchParams.toString());
   }, [query]);
+
+  useEffect(() => {
+    analytics(2).catch();
+  }, [])
 
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
