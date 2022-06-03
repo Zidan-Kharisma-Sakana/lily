@@ -17,6 +17,8 @@ import { OnboardingContentProps } from "../components/Event/ModalBody/Onboarding
 import { useAuth } from "../context/auth";
 import {analytics} from "../utils/api";
 
+import * as gtag from "../lib/ga";
+
 export enum HomeModalState {
   LEADCOMP = "LeadComp",
   LEADTALK = "LeadTalk",
@@ -61,6 +63,11 @@ const Home: NextPage = () => {
     const isOnboarding = !!router.query["onboard"] ?? false;
     if (isOnboarding) setOpen(HomeModalState.ONBOARDING);
     analytics(1).catch();
+
+    gtag.event({
+        action: 'homepage_visit',
+        category: 'general',
+    })
   }, [router]);
 
   return (

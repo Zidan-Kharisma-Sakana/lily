@@ -13,6 +13,7 @@ import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
 import { baseURLFE } from "../../utils/api";
+import * as gtag from "../../lib/ga";
 
 interface CompanyInterface {
   jobData: any;
@@ -21,6 +22,14 @@ interface CompanyInterface {
 
 const CompanyProfilePage: NextPage = (props) => {
   const { jobData, companyData } = props as CompanyInterface;
+  useEffect(() => {
+    gtag.event({
+      action: 'jobfair_company_visit',
+      category: 'general',
+      label: companyData.name
+    })
+  }, [companyData])
+
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
       <Head>
@@ -49,7 +58,7 @@ const CompanyProfilePage: NextPage = (props) => {
             <CompanyProfile {...companyData} />
           </div>
           <div className="w-full">
-            <JobCards data={jobData} />
+            <JobCards show={false} data={jobData} />
           </div>
         </div>
       </main>

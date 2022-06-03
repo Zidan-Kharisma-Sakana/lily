@@ -12,6 +12,7 @@ import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
 import { baseURLFE } from "../../utils/api";
 import { analytics } from "../../utils/api";
+import * as gtag from "../../lib/ga";
 
 const JobfairPage: NextPage = () => {
   const [data, setData] = useState<JobCardProps[]>([]);
@@ -69,6 +70,12 @@ const JobfairPage: NextPage = () => {
   useEffect(() => {
     analytics(2).catch();
   }, []);
+
+  useEffect(() => {
+    gtag.event({
+      action: 'jobfair_main_page_visit'
+    })
+  }, [])
 
   return (
     <div className="max-w-[100vw] overflow-x-hidden">

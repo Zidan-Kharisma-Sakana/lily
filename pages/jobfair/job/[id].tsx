@@ -27,6 +27,8 @@ import {
 } from "../../../components/Nav/ProfileButton";
 import { useAuth } from "../../../context/auth";
 import { baseURLFE } from "../../../utils/api";
+import * as gtag from "../../../lib/ga";
+
 interface JobProps {
   jobData: any;
   relatedData: any;
@@ -35,7 +37,13 @@ const JobPage: NextPage = (props) => {
   const { jobData, relatedData } = props as JobProps;
   const { user } = useAuth();
   const [userData, setUserData] = useState<UserFormData | null>(null);
-
+  useEffect(() => {
+    gtag.event({
+      action: "jobfair_offer_visit",
+      category: "general",
+      label: "job_offer_company_name - job_offer_name",
+    });
+  }, []);
   useEffect(() => {
     if (!userData && !!user) {
       fetchUserData(user);
