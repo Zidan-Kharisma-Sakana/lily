@@ -35,8 +35,26 @@ export const Hero: FC = () => {
           for youth to develop their leadership.
         </h4>
         <ExploreButton />
+        <Flags />
       </div>
       <Bubbles />
+    </div>
+  );
+};
+
+const Flags = () => {
+  return (
+    <div className="w-3/4 md:w-full relative">
+      <p className="font-bold text-sm mb-4 xl:mb-5 2xl:mb-6">
+        Partnering with International Organizations across
+      </p>
+      <div className="flex gap-x-6 gap-y-4 flex-wrap absolute left-0 top-full">
+        <img src="/images/SG.jpg" alt="" />
+        <img src="/images/SK.jpg" alt="" />
+        <img src="/images/PHP.jpg" alt="" />
+        <img src="/images/MLY.jpg" alt="" />
+        <img src="/images/AUS.jpg" alt="" />
+      </div>
     </div>
   );
 };

@@ -68,30 +68,29 @@ const Dec: FC<{ setOpenModal: React.Dispatch<boolean> }> = ({
 const FAQData: FAQBodyProps = {
   QnA: [
     {
-      question: "Pertanyaan 1",
-      answer:
-        "Jawaban 1, yaitu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+      question: "Is the event offline or online?",
+      answer:"From Pre-Event to Main Event, all seven events will be conducted in online settings in Western Indonesian Time (GMT+7)."
     },
     {
-      question: "Pertanyaan 2",
+      question: "How do I register and prepare for the event?",
       answer:
-        "Jawaban 2, yaitu Lorem, Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "To register, you need to make an account by signing up. When you are successfully signed up, an email confirmation will be sent to you. Once you have an account, you are free to register for all the events!",
     },
     {
-      question: "Pertanyaan 3",
+      question: "What is the cost of participating in this event?",
       answer:
-        "Jawaban 3, yaitu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "All events, except for LeadComp, are completely free of charge.",
     },
     {
-      question: "Pertanyaan 4",
+      question: "Can I invite my friends to attend the event?",
       answer:
-        "Jawaban 4, yaitu Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro ipsa facere recusandae ducimus, animi sit neque, labore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "To invite your friends, they need to sign up for an account on this website so that they can receive access to the event platform.",
     },
     {
       question:
-        "Pertanyaan 5 sangat panjang pertanyaanya, bisa makan tempat luas banget lmao lmao. Tampangnya nanti kayak gini nih",
+        "For Job Fair, can participants who didn’t upload their CV apply for job listings?",
       answer:
-        "Jawaban 5, yaitu Lorem,ore omnis adipisci veniam. Placeat expedita facere ullam cupiditate beatae a voluptatum vitae.",
+        "Yes, participants can apply for the job listings without having to upload CV since it is not mandatory to upload one.",
     },
   ],
 };

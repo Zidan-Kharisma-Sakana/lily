@@ -17,13 +17,12 @@ export const Footer: FC = () => {
       <section id="footer-events" className="hidden md:block">
         <h6 className="font-bold mb-2">Events</h6>
         <ul className="grid grid-cols-1 gap-y-1 cursor-pointer">
-          <li>Global Ambassador</li>
-          <li>Day In the Life at XX</li>
-          <li>LeadComp</li>
-          <li>Job Fair</li>
-          <li>Virtual Company Visit</li>
-          <li>Workshop</li>
-          <li>LeadTalk</li>
+          <li>
+            <a href="#event">LeadComp</a>
+          </li>
+          <li>
+            <a href="#event">Main Event</a>
+          </li>
         </ul>
       </section>
       <section id="footer-contact">
@@ -34,13 +33,27 @@ export const Footer: FC = () => {
 
         <h6 className="font-bold mb-2">Contact Us</h6>
         <div className="flex">
-          <img className="mr-4 cursor-pointer" src="/icons/mail.svg" alt="" />
-          <img
-            className="mr-4 cursor-pointer"
-            src="/icons/instagram.svg"
-            alt=""
-          />
-          <img className="mr-4 cursor-pointer" src="/icons/line.svg" alt="" />
+          <a href="mailto:aiesec@ui.ac.id">
+            <img className="mr-4 cursor-pointer" src="/icons/mail.svg" alt="" />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.instagram.com/leadseries/"
+            rel="noreferrer"
+          >
+            <img
+              className="mr-4 cursor-pointer"
+              src="/icons/instagram.svg"
+              alt=""
+            />
+          </a>
+          <a
+            target="_blank"
+            href="https://page.line.me/?accountId=aiesec_ui"
+            rel="noreferrer"
+          >
+            <img className="mr-4 cursor-pointer" src="/icons/line.svg" alt="" />
+          </a>
         </div>
       </section>
     </footer>

@@ -56,15 +56,12 @@ export const CompanyProfile: FC<CompanyProfileProps> = (props) => {
         >
           <img src="/icons/facebook2.svg" alt="" />
         </a>
-        <div
-        onClick={()=>{
-          navigator.clipboard.writeText(props.email)
-          toast.success("copied to clipboard")
-        }}
+        <a
+          href={`mailto:${props.email}`}
           className="block w-6 h-6 cursor-pointer"
         >
           <img src="/icons/mail2.svg" alt="" />
-        </div>
+        </a>
       </div>
       {/* about */}
       <div>

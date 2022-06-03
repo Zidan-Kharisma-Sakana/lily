@@ -11,12 +11,13 @@ import { Filter, MobileFilter } from "../../components/Jobfair/Filter";
 import { JobCards } from "../../components/Jobfair/JobCards";
 import { Nav } from "../../components/Nav";
 import { baseURLFE } from "../../utils/api";
-import {analytics} from "../../utils/api";
+import { analytics } from "../../utils/api";
 
 const JobfairPage: NextPage = () => {
   const [data, setData] = useState<JobCardProps[]>([]);
 
   const [shown, setShown] = useState<boolean>(false);
+  const [showResults, setShowResults] = useState(false);
   const closeFilter = () => setShown(false);
   const openFilter = () => setShown(true);
   const router = useRouter();
@@ -52,8 +53,8 @@ const JobfairPage: NextPage = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams();
     Object.keys(query).forEach((key) => {
+      if (!showResults) setShowResults(true);
       const d = query[key];
-      console.log(d);
       if (Array.isArray(d)) {
         d.forEach((term) => {
           if (!!term) searchParams.append(key, term);
@@ -62,13 +63,12 @@ const JobfairPage: NextPage = () => {
         searchParams.append(key, String(query[key]));
       }
     });
-    console.log(searchParams.toString());
     fetchData(searchParams.toString());
   }, [query]);
 
   useEffect(() => {
     analytics(2).catch();
-  }, [])
+  }, []);
 
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
@@ -102,7 +102,7 @@ const JobfairPage: NextPage = () => {
         {/* MOBILE: */}
         <div className="min-h-screen h-full md:hidden">
           <MobileFilter shown={shown} close={closeFilter} />
-          <JobCards data={data} />
+          <JobCards show={showResults} data={data} />
         </div>
         {/* DESKTOP: */}
         <div className="hidden md:flex gap-x-6">
@@ -110,7 +110,7 @@ const JobfairPage: NextPage = () => {
             <Filter />
           </div>
           <div className="w-full">
-            <JobCards data={data} />
+            <JobCards show={showResults} data={data} />
           </div>
         </div>
       </main>

@@ -18,7 +18,7 @@ export const ProfileButton: FC = () => {
         </h4>
         <button
           onClick={() => r.push("/sign-in")}
-          className="hidden sm:block py-2 px-4 lg:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer"
+          className="hidden sm:block  px-4 py-2 lg:py-3 xl:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer"
         >
           Sign In
         </button>

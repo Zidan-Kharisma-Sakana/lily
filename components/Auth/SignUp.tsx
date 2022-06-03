@@ -40,7 +40,7 @@ export const SignUpForm: FC = () => {
     const getURL = async () => {
       const res = await fetch(
         baseURLFE(
-          "auth/o/google-oauth2/?redirect_uri=http://localhost:3000/processGoogle"
+          "auth/o/google-oauth2/?redirect_uri=https://leadseries.id/processGoogle"
         ),
         {
           credentials: "include",

@@ -47,6 +47,12 @@ export const SideMenu: FC<{
           <h4 onClick={to("faq")} className="mb-6 cursor-pointer">
             FAQ
           </h4>
+          <h4
+            onClick={() => r.push("/jobfair")}
+            className="mb-6 cursor-pointer"
+          >
+            Job Fair
+          </h4>
           <h4 onClick={to("footer-contact")} className="mb-6 cursor-pointer">
             Contact Us
           </h4>

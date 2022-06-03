@@ -1,12 +1,8 @@
 import Cookies from "js-cookie";
 import { NextPage } from "next";
-import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import { SignUpForm } from "../components/Auth/SignUp";
-import { Footer } from "../components/Footer";
 import { baseURLFE } from "../utils/api";
 
 const createAccount = async (

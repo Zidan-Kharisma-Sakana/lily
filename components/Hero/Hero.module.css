@@ -1,7 +1,7 @@
 .hero {
   background: linear-gradient(106.11deg, #091a76 30.02%, #b8454d 122%);
   position: relative;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 20px);
   overflow: hidden;
   /* max-height: 668px; */
   width: 100%;
@@ -31,6 +31,15 @@
   -webkit-text-fill-color: transparent;
 }
 
+@media (max-width: 1280px) and (min-width: 1024px) {
+  .title h1 {
+    font-size: 55px;
+    line-height: 56px;
+  }
+  .upcoming{
+    font-size: 16px;
+  }
+}
 @media (max-width: 1024px) and (min-width: 768px) {
   .title h1 {
     font-size: 48px;

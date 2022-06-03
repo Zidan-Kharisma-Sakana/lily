@@ -42,23 +42,23 @@ export const LeadCompContent = () => {
           <RegistrationCard
             title="Early Bird"
             harga="RP125.000"
-            price="$10"
+            price="$15"
             status="CLOSED"
-            tanggal="20 - 27 May 2022"
+            tanggal="18 April - 2 May 2022"
           />
           <RegistrationCard
             title="Normal"
-            harga="RP125.000"
-            price="$10"
-            status="REGISTER"
+            harga="RP150.000"
+            price="$20"
+            status="CLOSED"
             tanggal="28 May - 28 June 2022"
           />
           <RegistrationCard
             title="Late"
-            harga="RP125.000"
-            price="$10"
-            status="COMING_SOON"
-            tanggal="29 - 30 June 2022"
+            harga="RP175.000"
+            price="$25"
+            status="REGISTER"
+            tanggal="25 May 2022 - 3 June 2022"
             isLast
           />
         </div>
@@ -87,6 +87,10 @@ const RegistrationCard: FC<{
   };
   return (
     <div
+      onClick={() =>
+        p.status === "REGISTER" &&
+        window.open(" https://linktr.ee/leadseries2022")
+      }
       style={{
         backdropFilter: "blur(4px)",
         background:
