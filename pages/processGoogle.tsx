@@ -9,8 +9,8 @@ const createAccount = async (
   q: string,
   query: any
 ): Promise<boolean | string> => {
+  toast.loading("Please wait a moment...");
   const url = baseURLFE("auth/o/google-oauth2/" + q);
-  console.log(q);
   const res = await fetch(url, {
     method: "POST",
     credentials: "include",
@@ -40,7 +40,7 @@ const ProcessGoogle: NextPage = () => {
     const signup = async (router: NextRouter) => {
       const url = router.asPath;
       if (await createAccount(url.substring(url.indexOf("?")), router.query)) {
-        location.replace('/?onboard=true')
+        location.replace("/?onboard=true");
       }
     };
 
@@ -48,10 +48,6 @@ const ProcessGoogle: NextPage = () => {
       signup(router);
     }
   }, [router]);
-  return (
-    <div>
-
-    </div>
-  );
+  return <div></div>;
 };
 export default ProcessGoogle;
