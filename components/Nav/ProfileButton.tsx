@@ -12,13 +12,13 @@ export const ProfileButton: FC = () => {
       <>
         <h4
           onClick={() => r.push("/sign-in")}
-          className="mb-6 cursor-pointer sm:hidden"
+          className="mb-6 cursor-pointer md:hidden"
         >
           Sign In
         </h4>
         <button
           onClick={() => r.push("/sign-in")}
-          className="hidden sm:block  px-4 py-2 lg:py-3 xl:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer"
+          className="hidden md:block  px-4 py-2 lg:py-3 xl:py-4 lg:px-8 text-[#3C1856] rounded-[48px] bg-[#E9C1E4] cursor-pointer"
         >
           Sign In
         </button>
@@ -28,18 +28,18 @@ export const ProfileButton: FC = () => {
     <>
       <h4
         onClick={() => r.push("/dashboard")}
-        className="mb-6 cursor-pointer sm:hidden"
+        className="mb-6 cursor-pointer md:hidden"
       >
         Dashboard
       </h4>
-      <h4 onClick={logout} className="mb-6 cursor-pointer sm:hidden">
+      <h4 onClick={logout} className="mb-6 cursor-pointer md:hidden">
         Logout
       </h4>
 
       <div
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        className="text-white hover:text-[#E9C1E4] gap-x-2 relative items-center hidden sm:flex"
+        className="text-white hover:text-[#E9C1E4] gap-x-2 relative items-center hidden md:flex"
       >
         <h4>Hi, {getFirstName(user.full_name)}</h4>
         <img src="/icons/arrow_faq.svg" alt="" className="w-3 h-2" />

@@ -16,7 +16,7 @@ export const LeadCompContent = () => {
         <div className="flex items-center text-xs gap-x-2">
           <p>More detailed explanation about LeadComp on our booklet</p>
           <a
-            href=""
+            href="https://drive.google.com/file/d/17glCao3v8JrxLIRd4bGBps-qTM2_jxDX/view"
             className="bg-[#724182] text-center rounded-[48px] py-2 px-4 text-white cursor-pointer"
           >
             Download Booklet

@@ -35,8 +35,12 @@ export const JobFairForm: FC<{
   const [resumename, setresumename] = useState<string>("");
   const [cvname, setcvname] = useState<string>("");
 
-  const onApply = () => {
-    closeModal();
+  useEffect(() => {
+    if (!data) return;
+    else fillForm();
+  }, [data]);
+
+  const fillForm = () => {
     setfname(data?.firstname ?? "");
     setlname(data?.lastname ?? "");
     setemail(data?.email ?? "");
@@ -45,6 +49,11 @@ export const JobFairForm: FC<{
     setportfolio(data?.portfolio ?? "");
     setresumename(data?.resumeFileName ?? "");
     setcvname(data?.cvFileName ?? "");
+  };
+
+  const onApply = () => {
+    closeModal();
+    fillForm();
     scrollKe("email_phone");
   };
 
