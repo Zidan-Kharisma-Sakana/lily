@@ -26,7 +26,7 @@ export const FLocation: FC = () => {
         },
         {
           text: "DI Yogyakarta",
-          code: "DI Yogyakarta",
+          code: "DIY",
         },
         {
           text: "Sumatera",

@@ -44,7 +44,7 @@ export const Hero: FC = () => {
 
 const Flags = () => {
   return (
-    <div className="w-3/4 md:w-full relative">
+    <div className="w-3/4 md:w-full relative z-10">
       <p className="font-bold text-sm mb-4 xl:mb-5 2xl:mb-6">
         Partnering with International Organizations across
       </p>

@@ -7,6 +7,7 @@
   width: 100%;
   color: #ffffff;
   z-index: 25;
+  min-height: 600px;
 }
 
 .title {
@@ -41,6 +42,7 @@
   }
 }
 @media (max-width: 1024px) and (min-width: 768px) {
+
   .title h1 {
     font-size: 48px;
     line-height: 56px;
@@ -61,6 +63,7 @@
 @media (max-width: 640px) {
   .hero{
     height: calc(100vh - 90px);
+    min-height: 640px;
   }
   .title h1 {
     font-size: 24px;

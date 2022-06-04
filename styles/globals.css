@@ -37,7 +37,7 @@ a {
   border-radius: 8px;
   padding: 16px;
 }
-.glassCardNoPad{
+.glassCardNoPad {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   background: rgba(205, 207, 208, 0.25);
@@ -64,12 +64,17 @@ a {
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  /* -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; */
 }
 *:focus {
   outline: none !important;
+}
+#SideMenu {
+  background: rgba(196, 196, 196, 0.3);
+  box-shadow: -1px 0px 13.4464px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(85.1454px);
+}
+@supports (-moz-appearance: none) {
+  #SideMenu {
+    background: rgba(9, 26, 118, 0.95);
+  }
 }

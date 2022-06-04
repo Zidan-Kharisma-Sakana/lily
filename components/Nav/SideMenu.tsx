@@ -21,6 +21,7 @@ export const SideMenu: FC<{
   return (
     <>
       <div
+        id="SideMenu"
         onClick={(e) => e.stopPropagation()}
         className={`bg-[#091A76] w-[70%] fixed right-0 top-0 h-screen z-50 px-8 pt-20 transform transition-all ${
           open ? "" : "translate-x-full"

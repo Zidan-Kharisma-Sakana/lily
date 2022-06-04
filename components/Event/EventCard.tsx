@@ -25,7 +25,7 @@ export const EventCard: FC<EventCardProps> = (props) => {
           <img src="/icons/calendar.svg" alt="cal" />{" "}
           <p className="font-bold text-black text-xs">{props.date}</p>
         </div>
-        <p className="text-sm text-justify">{props.description}</p>
+        <p className="text-sm text-justify md:mb-16">{props.description}</p>
         <Content {...props} />
       </div>
     </div>
