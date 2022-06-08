@@ -76,7 +76,7 @@ const data = [
   },
   {
     title: "Workshop",
-    tanggal: "30 June 2022",
+    tanggal: "29-30 June 2022",
     text: "An interactive workshop session where youths can discuss, share thoughts, and do practical work on a specific subject with a group of people from different backgrounds.",
   },
   {

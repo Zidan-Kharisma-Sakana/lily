@@ -31,7 +31,7 @@ export const Nav: FC<{
         {withBackButton && (
           <div className="bg-white w-full py-3 pl-4 md:hidden">
             <img
-              onClick={() => (!!onBack ? onBack() : router.back())}
+              onClick={() => router.push('/jobfair')}
               src="/icons/arrow-left.svg"
               alt=""
               className="mb-2 md:hidden w-8 h-8"
