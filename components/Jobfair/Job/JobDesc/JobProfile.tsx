@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/router";
 import { FC, useState } from "react";
+import { useAuth } from "../../../../context/auth";
 import { JobCardProps } from "../../../Dashboard";
 import { JobFairForm, UserFormData } from "../JobForm";
 import { JobAbout, JobActivity, JobLooking } from "./Desc";
@@ -23,8 +25,15 @@ export const JobProfile: FC<JobProfileProps> = (data) => {
   const [modal, setModal] = useState<JobProfileModalState>(
     JobProfileModalState.DEFAULT
   );
+  const { user } = useAuth();
+  const router = useRouter()
+  
   const showModalApply = () => {
-    setModal(JobProfileModalState.AUTOFILLED);
+    if(!!user){
+      setModal(JobProfileModalState.AUTOFILLED);
+    }else{
+      router.push('/sign-in')
+    }
   };
   const { Job } = data;
   return (
