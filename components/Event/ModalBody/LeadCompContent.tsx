@@ -26,14 +26,14 @@ export const LeadCompContent = () => {
       <div id="timeline">
         <h4 className="text-lg font-bold">LeadComp Timeline</h4>
         <img
-          src="/images/timeline.jpg"
+          src="/images/timeline.png"
           alt="timeline leadcomp"
-          className="hidden md:block mx-auto"
+          className="hidden md:block mx-auto w-1/3 xl:w-2/5"
         />
         <img
-          src="/images/timeline_mobile.png"
+          src="/images/timeline.png"
           alt="timeline leadcomp"
-          className="my-4 sm:my-6 md:hidden mx-auto"
+          className="my-4 sm:my-6 md:hidden mx-auto w-1/2 sm:w-2/5"
         />
       </div>
       <div id="registration">
@@ -42,23 +42,23 @@ export const LeadCompContent = () => {
           <RegistrationCard
             title="Early Bird"
             harga="RP125.000"
-            price="$15"
+            price="$10"
             status="CLOSED"
             tanggal="18 April - 2 May 2022"
           />
           <RegistrationCard
             title="Normal"
             harga="RP150.000"
-            price="$20"
+            price="$15"
             status="CLOSED"
-            tanggal="28 May - 28 June 2022"
+            tanggal="3 May - 24 May 2022"
           />
           <RegistrationCard
             title="Late"
             harga="RP175.000"
             price="$25"
-            status="REGISTER"
-            tanggal="25 May 2022 - 3 June 2022"
+            status="CLOSED"
+            tanggal="25 May - 11 June 2022"
             isLast
           />
         </div>
