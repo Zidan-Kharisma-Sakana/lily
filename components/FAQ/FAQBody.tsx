@@ -2,7 +2,7 @@
 import { FC, useState } from "react";
 import { FAQModal } from "./FAQModal";
 export interface FAQBodyProps {
-  QnA: { question: string; answer: string }[];
+  QnA: { question: string; answer: string | string[] }[];
 }
 export const FAQBody: FC<FAQBodyProps> = ({ QnA }) => {
   return (
@@ -22,7 +22,7 @@ export const FAQBody: FC<FAQBodyProps> = ({ QnA }) => {
 
 const FAQTab: FC<{
   question: string;
-  answer: string;
+  answer: string | string[];
 }> = (p) => {
   const [open, setOpen] = useState(false);
 
@@ -50,7 +50,17 @@ const FAQTab: FC<{
           open ? "max-h-none" : "max-h-0 text-transparent"
         }`}
       >
-        <p className="pt-2">{p.answer}</p>
+        {!Array.isArray(p.answer) ? (
+          <p className="pt-2">{p.answer}</p>
+        ) : (
+          p.answer.map((message, idx) => {
+            return (
+              <p key={idx} className="pt-2">
+                {message}
+              </p>
+            );
+          })
+        )}
       </div>
     </div>
   );

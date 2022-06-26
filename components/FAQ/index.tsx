@@ -69,7 +69,10 @@ const FAQData: FAQBodyProps = {
   QnA: [
     {
       question: "Is the event offline or online?",
-      answer:"From Pre-Event to Main Event, all seven events will be conducted in online settings in Western Indonesian Time (GMT+7)."
+      answer: [
+        "Workshop, Company Visit Day 1 (11 July), and LeadTalk Day 1 (14 July) will be conducted online through Zoom Meetings.",
+        "Company Visit Day 2 (12 July) will be held offline at our company partner’s office and LeadTalk Day 2 (15 July) will be held offline at Balai Sidang Universitas Indonesia. Stay tuned on our social media for more information!        ",
+      ],
     },
     {
       question: "How do I register and prepare for the event?",
@@ -78,8 +81,7 @@ const FAQData: FAQBodyProps = {
     },
     {
       question: "What is the cost of participating in this event?",
-      answer:
-        "All events, except for LeadComp, are completely free of charge.",
+      answer: "All events, except for LeadComp, are completely free of charge.",
     },
     {
       question: "Can I invite my friends to attend the event?",
