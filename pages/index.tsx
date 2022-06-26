@@ -85,7 +85,7 @@ const Home: NextPage = () => {
         <Hero />
       </header>
       <div className={`overflow-hidden `}>
-        <main className="py-8 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] xl:py-11 relative z-10">
+        <main className="py-8 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] xl:py-11 relative z-10">
           <About />
           <Banner />
           <Event openLeadComp={openLeadComp} openLeadTalk={openLeadTalk} />

@@ -53,7 +53,7 @@ export const Multiselect: FC<{
                 checked[idx] && "bg-primary-base border-none"
               }`}
             >
-              {checked[idx] && <p>&#10004;</p>}
+              {checked[idx] && <img src="/icons/check-white.svg" alt="" />}
             </div>
             <p>{data.text}</p>
           </div>

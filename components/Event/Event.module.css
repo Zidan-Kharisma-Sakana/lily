@@ -30,6 +30,6 @@
 @media (min-width: 1280px) {
   .eventcard {
     width: 25%;
-    max-width: 400px;
+    max-width: 300px;
   }
 }

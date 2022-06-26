@@ -18,7 +18,7 @@ const TOC: NextPage = () => {
       <header className="relative">
         <Nav isHome={false} />
       </header>
-      <main className="my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] min-h-screen">
+      <main className="my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] min-h-screen">
         <h1 className="text-primary-darkest text-2xl md:text-[32px] mb-6 md:mb-10 font-bold">
           Terms of Service
         </h1>

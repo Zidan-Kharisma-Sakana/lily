@@ -20,12 +20,12 @@ export const Nav: FC<{
   return (
     <div id="nav" className={styles.nav}>
       {!!isHome && (
-        <nav className="z-30 absolute items-stretch md:items-center top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
+        <nav className="z-30 absolute items-stretch md:items-center top-0 left-0 w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] flex justify-between">
           <NavContent isHome={isHome} setOpenModal={setOpen} />
         </nav>
       )}
       <div className="fixed top-0 left-0 w-full z-[25]">
-        <nav className="z-20 bg-[#091A76] items-stretch md:items-center w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] flex justify-between">
+        <nav className="z-20 bg-[#091A76] items-stretch md:items-center w-full px-4 py-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] flex justify-between">
           <NavContent isHome={isHome} setOpenModal={setOpen} />
         </nav>{" "}
         {withBackButton && (

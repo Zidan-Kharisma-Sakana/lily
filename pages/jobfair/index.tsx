@@ -91,7 +91,7 @@ const JobfairPage: NextPage = () => {
         <Nav isHome={false} />
       </header>
       <main
-        className={`relative my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] min-h-[80vh]`}
+        className={`relative my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] min-h-[80vh]`}
       >
         <JobSearchDec />
         <div className="w-full flex  mb-10 items-center justify-between">

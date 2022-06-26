@@ -86,7 +86,7 @@ const Dashboard: NextPage = () => {
       <header className="relative">
         <Nav isHome={false} />
       </header>
-      <main className="my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] min-h-screen">
+      <main className="my-32 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] min-h-screen">
         <h1 className="text-primary-darkest text-[32px] mb-10 font-bold">
           Dashboard
         </h1>

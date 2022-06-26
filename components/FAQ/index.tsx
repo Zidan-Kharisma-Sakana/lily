@@ -12,7 +12,7 @@ export const FAQ: FC = () => {
       style={{
         background: "linear-gradient(106.11deg, #091A76 30.02%, #B8454D 122%)",
       }}
-      className="rounded-t-[34px] relative pb-[60px] py-[60px] sm:pt-[80px] md:pt-[120px] px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] lg:min-h-screen mt-12 overflow-hidden "
+      className="rounded-t-[34px] relative pb-[60px] py-[60px] sm:pt-[80px] md:pt-[120px] px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] lg:min-h-screen mt-12 overflow-hidden "
     >
       <FAQModal open={openModal} close={() => setOpenModal(false)}>
         <FAQForm />

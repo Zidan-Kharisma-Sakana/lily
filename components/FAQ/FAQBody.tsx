@@ -6,7 +6,7 @@ export interface FAQBodyProps {
 }
 export const FAQBody: FC<FAQBodyProps> = ({ QnA }) => {
   return (
-    <div className="w-full lg:min-w-[550px] lg:w-[60%] text-white">
+    <div className="w-full lg:min-w-[550px] lg:w-[60%] lg:mt-10 2xl:mt-20 text-white">
       <h4 className="font-bold text-lg sm:text-xl lg:text-2xl">
         Frequently Asked Questions
       </h4>

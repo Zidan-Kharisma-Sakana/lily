@@ -96,7 +96,7 @@ const RegistrationCard: FC<{
         background:
           "linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(180deg, rgba(210, 165, 255, 0.2375) 0%, rgba(205, 72, 204, 0.25) 100%)",
       }}
-      className={` mx-auto md:mx-0 w-[240px] h-[180px] rounded-xl p-6 ${
+      className={` mx-auto md:mx-0 w-[240px] h-[200px] rounded-xl p-6 ${
         p.isLast ? "sm:col-span-2 md:col-span-1" : ""
       }`}
     >

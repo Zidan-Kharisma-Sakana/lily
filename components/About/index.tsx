@@ -19,7 +19,7 @@ export const About: FC = () => {
           />
           <h3>?</h3>
         </div>
-        <div className="flex flex-col-reverse xl:flex-row justify-between items-end relative mt-4">
+        <div className="flex flex-col-reverse xl:flex-row justify-between items-end xl:items-center relative mt-4">
           <div className="text-sm md:text-base lg:text-lg mt-4 xl:mt-0 w-full xl:w-1/2 xl:min-h-[216px]">
             <p>
               LeadSeries 2022 is a virtual event that consists of pre-event such

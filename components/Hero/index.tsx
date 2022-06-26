@@ -9,7 +9,7 @@ export const Hero: FC = () => {
     <div id="home" className={styles.hero}>
       <div
         id="hero-content"
-        className="flex flex-col justify-center w-full h-full px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] -translate-y-4"
+        className="flex flex-col justify-center w-full h-full px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] -translate-y-4"
       >
         <div className="flex items-center">
           <img
@@ -48,7 +48,7 @@ const Flags = () => {
       <p className="font-bold text-sm mb-4 xl:mb-5 2xl:mb-6">
         Partnering with International Organizations across
       </p>
-      <div className="grid grid-cols-4 2xl:grid-cols-7 gap-x-6 gap-y-0 absolute left-0 top-full">
+      <div className="grid grid-cols-4 2xl:grid-cols-7 gap-x-6 gap-y-0 absolute left-0 top-full lg:top-3/4 xl:top-1/2">
         <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/australia.png" alt="australia" />
         <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/malaysia.png" alt="malaysia" />
         <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/netherlands.png" alt="netherlands" />

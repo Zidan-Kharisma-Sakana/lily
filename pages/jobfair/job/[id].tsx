@@ -88,7 +88,7 @@ const JobPage: NextPage = (props) => {
         <Nav isHome={false} withBackButton={true} />
       </header>
       <main
-        className={`max-w-screen overflow-x-hidden my-20 md:my-24 lg:my-28  px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] relative`}
+        className={`max-w-screen overflow-x-hidden my-20 md:my-24 lg:my-28  px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] relative`}
       >
         <JobSearchDec />
         <div className="hidden w-full md:flex mb-7 items-center justify-between">
