@@ -36,8 +36,8 @@ export const Hero: FC = () => {
         </h4>
         <ExploreButton />
         <Flags />
+        <Bubbles />
       </div>
-      <Bubbles />
     </div>
   );
 };
@@ -48,12 +48,14 @@ const Flags = () => {
       <p className="font-bold text-sm mb-4 xl:mb-5 2xl:mb-6">
         Partnering with International Organizations across
       </p>
-      <div className="flex gap-x-6 gap-y-4 flex-wrap absolute left-0 top-full">
-        <img src="/images/SG.jpg" alt="" />
-        <img src="/images/SK.jpg" alt="" />
-        <img src="/images/PHP.jpg" alt="" />
-        <img src="/images/MLY.jpg" alt="" />
-        <img src="/images/AUS.jpg" alt="" />
+      <div className="grid grid-cols-4 2xl:grid-cols-7 gap-x-6 gap-y-0 absolute left-0 top-full">
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/australia.png" alt="australia" />
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/malaysia.png" alt="malaysia" />
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/netherlands.png" alt="netherlands" />
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/philippines.png" alt="philippines" />
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/singapore.png" alt="singapore" />
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/south-korea.png" alt="south-korea" />
+        <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/thailand.png" alt="thailandu" />
       </div>
     </div>
   );
