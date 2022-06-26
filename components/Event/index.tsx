@@ -27,7 +27,7 @@ export const Event: FC<{
 const data = [
   {
     title: "LeadComp",
-    date: "18 May - 25 June 2022",
+    date: "18 April - 25 June 2022",
     description:
       "	LeadComp is an Initiative SDG Competition that aims to accelerate youth’s innovation towards the creation of sustainable economic growth. This event will focus on SDGs No 8 and 9, while using Smart City as the handy innovation to achieve a greater state.",
     status: "LEADCOMP",
@@ -35,7 +35,7 @@ const data = [
   },
   {
     title: "Main Event",
-    date: "4 June - 3 July 2022",
+    date: "25 June - 15 July 2022",
     description:
       "We have a total of 7 main events such as LeadTalk, Job Fair, Global Ambassador, Day In the Life, Workshop, and Virtual Company Visit. By clicking the register button, you are registering for all LeadSeries’ main events. ",
     status: "LEADTALK",
