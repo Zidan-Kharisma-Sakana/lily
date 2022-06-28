@@ -48,7 +48,7 @@ const Flags = () => {
       <p className="font-bold text-sm mb-4 xl:mb-5 2xl:mb-6">
         Partnering with International Organizations across
       </p>
-      <div className="grid grid-cols-4 2xl:grid-cols-7 gap-x-6 gap-y-0 absolute left-0 top-full lg:top-3/4 xl:top-1/2">
+      <div className="grid grid-cols-4 2xl:grid-cols-7 gap-x-6 gap-y-4 absolute left-0 top-full lg:top-3/4 xl:top-1/2">
         <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/australia.png" alt="australia" />
         <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/malaysia.png" alt="malaysia" />
         <img className="sm:max-w-[80px] lg:max-w-[100px]" src="/images/flag/netherlands.png" alt="netherlands" />
