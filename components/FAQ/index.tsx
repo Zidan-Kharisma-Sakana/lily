@@ -71,7 +71,8 @@ const FAQData: FAQBodyProps = {
       question: "Is the event offline or online?",
       answer: [
         "Workshop, Company Visit Day 1 (11 July), and LeadTalk Day 1 (14 July) will be conducted online through Zoom Meetings.",
-        "Company Visit Day 2 (12 July) will be held offline at our company partner’s office and LeadTalk Day 2 (15 July) will be held offline at Balai Sidang Universitas Indonesia. Stay tuned on our social media for more information!        ",
+        "Company Visit Day 2 (12 July) will be held offline at our company partner’s office and LeadTalk Day 2 (15 July) will be held offline at Balai Sidang Universitas Indonesia. Stay tuned on our social media for more information!",
+        "Stay updated on our Instagram for the latest updates!"
       ],
     },
     {

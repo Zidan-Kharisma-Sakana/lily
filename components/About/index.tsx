@@ -5,7 +5,7 @@ import styles from "./About.module.css";
 import { StatCard } from "./StatCard";
 export const About: FC = () => {
   return (
-    <section className="">
+    <section className="md:mt-16 2xl:mt-24">
       <div className={styles.about}>
         <div
           id="about"
@@ -34,7 +34,7 @@ export const About: FC = () => {
               Development Goals.
             </p>
           </div>
-          <div className="w-full mx-auto sm:w-3/4 md:w-1/2  flex flex-row-reverse xl:absolute bottom-0 right-0 rounded-2xl 2xl:static">
+          <div className="w-full mx-auto sm:w-3/4 md:w-1/2  flex flex-row-reverse xl:absolute bottom-0 right-0 rounded-2xl">
             <img
               src="/images/about.png"
               alt="about"
