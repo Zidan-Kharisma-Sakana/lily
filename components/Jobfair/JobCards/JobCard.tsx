@@ -13,18 +13,21 @@ export const JobCard: FC<JobCardProps> = (props) => {
         onClick={(e) => e.stopPropagation()}
         href={"/jobfair/" + props.company.id}
       >
-        <img
-          className="w-[45px] h-[45px] sm:w-[72px] sm:h-[72px] md:w-[96px] md:h-[96px] rounded-lg bg-[#C4C4C4]"
-          src={props.company.img}
-          alt={props.company.name + " logo"}
-        />{" "}
+        <div className="w-[45px] sm:w-[72px] sm:h-[72px] md:w-[96px] md:h-[96px] relative">
+          <img
+            className="w-full rounded-lg bg-[#C4C4C4] absolute left-0 top-1/2 -translate-y-1/2"
+            src={props.company.img}
+            alt={props.company.name + " logo"}
+          />{" "}
+        </div>
       </a>
-      <div className="flex flex-col justify-between gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base">
+      <div className="flex flex-col justify-between gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base w-full">
         <div>
           <a
             onClick={(e) => e.stopPropagation()}
             href={"/jobfair/job/" + props.id}
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             <h4 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">
               {props.title}
@@ -37,8 +40,8 @@ export const JobCard: FC<JobCardProps> = (props) => {
           </h6>
         </div>
 
-        <div className="md:flex justify-between items-center gap-x-14 md:text-sm lg:text-base ">
-          <div className="flex gap-x-2 mb-1 lg:gap-x-2.5 items-center md:w-[120px] lg:w-[185px]">
+        <div className="md:flex items-center gap-x-14 xl:gap-x-24 md:text-sm lg:text-base ">
+          <div className="flex gap-x-2 mb-1 lg:gap-x-2.5 items-center md:w-[120px] lg:w-[185px] xl:w-52">
             <img
               src="/icons/map-pin.svg"
               alt="location"

@@ -31,33 +31,32 @@ export const AppliedCard: FC<AppliedJobCardProps> = (props) => {
         src={props.company.img}
         alt={props.company.name + " logo"}
       />
-
       <div className="w-full flex flex-col gap-y-1 sm:gap-y-2 text-xs sm:text-sm md:text-base">
-        {/* {!!props.applyTime && <p>Applied on {applyTime.toUTCString()}</p>} */}
         <h4 className="font-bold text-sm sm:text-base md:text-lg">
           {props.title}
         </h4>
         <a
           onClick={(e) => e.stopPropagation()}
           href={"/jobfair/" + props.company.id}
-          target="_blank" rel="noreferrer"
+          target="_blank"
+          rel="noreferrer"
         >
           <h6>{props.company.name}</h6>
         </a>
-        <div className="md:flex justify-between items-center">
-          <div className="w-1/2 flex gap-x-2 mb-1 lg:gap-x-2.5 items-center">
+        <div className="md:flex items-center gap-x-14 md:text-sm lg:text-base ">
+          <div className="flex gap-x-2 mb-1 lg:gap-x-2.5 items-center md:w-[120px] lg:w-[185px] xl:w-52">
             <img
               src="/icons/map-pin.svg"
               alt="location"
-              className="w-[12px] h-[14px]"
+              className="w-[12px] h-[14px] md:w-[14px] md:h-[16px]"
             />
             <p>{props.location}</p>
           </div>
-          <div className="w-1/2 flex gap-x-2 mb-1 lg:gap-x-2.5 items-center">
+          <div className="flex gap-x-2 mb-1 lg:gap-x-2.5 items-center">
             <img
               src="/icons/briefcase.svg"
               alt="tipe"
-              className="w-[16px] h-[16px]"
+              className="w-[16px] h-[16px] md:w-[18px] md:h-[18px]"
             />
             <p>{props.type}</p>
           </div>
