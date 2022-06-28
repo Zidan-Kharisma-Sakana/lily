@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
-  AppliedCard,
   AppliedJobCardProps,
   RegisteredCard,
   RegisteredEventsData,
@@ -14,6 +13,7 @@ import {
 } from "../components/Dashboard";
 import { JobFairFormProps } from "../components/Dashboard/Sidebar/ModalDashboard.tsx/Form";
 import { Footer } from "../components/Footer";
+import { JobCard } from "../components/Jobfair/JobCards/JobCard";
 import { Nav } from "../components/Nav";
 import { useAuth } from "../context/auth";
 
@@ -107,7 +107,7 @@ const Dashboard: NextPage = () => {
                   Applied Job
                 </h3>
                 {dashboardData.AppliedJobs.map((data, idx) => (
-                  <AppliedCard key={`job-${idx}`} {...data} />
+                  <JobCard key={`job-${idx}`} {...data} />
                 ))}
               </section>
             </div>
