@@ -56,7 +56,7 @@ export const LeadTalkContent: FC<{ openSuccess: () => void }> = ({
 const data = [
   {
     title: "Job Fair",
-    tanggal: "25 June - 23 July 2022",
+    tanggal: "25 June - 26 July 2022",
     text: "In order to optimally facilitate the needs of our partner companies, we are going to provide a virtual job fair as an interactive tool for talents across Indonesia. This virtual job fair will increase our company partners’ employer branding by making a personalized booth and making them able to collect talents’ databases.",
   },
   {

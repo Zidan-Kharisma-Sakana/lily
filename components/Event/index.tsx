@@ -35,7 +35,7 @@ const data = [
   },
   {
     title: "Main Event",
-    date: "25 June - 15 July 2022",
+    date: "25 June - 26 July 2022",
     description:
       "We have a total of 7 main events such as LeadTalk, Job Fair, Global Ambassador, Day In the Life, Workshop, and Virtual Company Visit. By clicking the register button, you are registering for all LeadSeries’ main events. ",
     status: "LEADTALK",
