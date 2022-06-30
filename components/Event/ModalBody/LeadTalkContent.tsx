@@ -55,11 +55,6 @@ export const LeadTalkContent: FC<{ openSuccess: () => void }> = ({
 
 const data = [
   {
-    title: "LeadTalk",
-    tanggal: "14-15 July 2022",
-    text: "For the peak of our event, we are bringing an exclusive talkshow that is filled with impactful speakers from national and international levels for two days. The talkshows are designed specifically for youths who are interested in developing their career in startups, consulting, and finance.",
-  },
-  {
     title: "Job Fair",
     tanggal: "25 June - 23 July 2022",
     text: "In order to optimally facilitate the needs of our partner companies, we are going to provide a virtual job fair as an interactive tool for talents across Indonesia. This virtual job fair will increase our company partners’ employer branding by making a personalized booth and making them able to collect talents’ databases.",
@@ -67,7 +62,12 @@ const data = [
   {
     title: "Company Visit",
     tanggal: "11 - 12 July 2022",
-    text: "A session where companies give our participants a glimpse of what it is like working in those respective companies. The session could be modified to the needs of our partner.",
+    text: "[HYBRID] Our company visit session will give you a sneak peak of what its like to work on our partnered companies. The offline company visit will be held on 12 July 2022.",
+  },
+  {
+    title: "LeadTalk",
+    tanggal: "14-15 July 2022",
+    text: "[HYBRID] For the peak of our event, we are bringing an exclusive hybrid talkshow for career seekers in startups, consulting and finance that is filled with national and international impactful speakers for two days. The offline event will be held on 15th of July 2022.",
   },
   {
     title: "Workshop",

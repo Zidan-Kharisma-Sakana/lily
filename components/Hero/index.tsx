@@ -31,7 +31,7 @@ export const Hero: FC = () => {
           <h1>Has Arrived!</h1>
         </div>
         <h4 className="pl-1.5 mt-1 font-medium text-justify text-sm sm:text-lg md:text-xl lg:text-2xl w-3/4 sm:w-4/5 md:w-3/5 xl:w-1/2 xl:min-w-[680px] lg:leading-10">
-          A virtual event that aims to bring insights and practical knowledge
+          A hybrid event that aims to bring insights and practical knowledge
           for youth to develop their leadership.
         </h4>
         <ExploreButton />

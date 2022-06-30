@@ -22,8 +22,8 @@ export const About: FC = () => {
         <div className="flex flex-col-reverse xl:flex-row justify-between items-end xl:items-center relative mt-4">
           <div className="text-sm md:text-base lg:text-lg mt-4 xl:mt-0 w-full xl:w-1/2 xl:min-h-[216px]">
             <p>
-              LeadSeries 2022 is a virtual event that consists of pre-event such
-              as Global Ambassador, main events such as Job Fair, Virtual
+              LeadSeries 2022 is a hybrid event that consists of pre-event such
+              as Global Ambassador, main events such as Job Fair, 
               Company Visit, Workshop, Competition, Conference, and Talkshow
               sequentially from May until July.
             </p>
