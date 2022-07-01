@@ -60,6 +60,11 @@ const data = [
     text: "In order to optimally facilitate the needs of our partner companies, we are going to provide a virtual job fair as an interactive tool for talents across Indonesia. This virtual job fair will increase our company partners’ employer branding by making a personalized booth and making them able to collect talents’ databases.",
   },
   {
+    title: "Workshop",
+    tanggal: "2 July 2022",
+    text: "An interactive workshop session where youths can discuss, share thoughts, and do practical work on a specific subject with a group of people from different backgrounds.",
+  },
+  {
     title: "Company Visit",
     tanggal: "11 - 12 July 2022",
     text: "[HYBRID] Our company visit session will give you a sneak peak of what its like to work on our partnered companies. The offline company visit will be held on 12 July 2022.",
@@ -68,11 +73,6 @@ const data = [
     title: "LeadTalk",
     tanggal: "14-15 July 2022",
     text: "[HYBRID] For the peak of our event, we are bringing an exclusive hybrid talkshow for career seekers in startups, consulting and finance that is filled with national and international impactful speakers for two days. The offline event will be held on 15th of July 2022.",
-  },
-  {
-    title: "Workshop",
-    tanggal: "2 July 2022",
-    text: "An interactive workshop session where youths can discuss, share thoughts, and do practical work on a specific subject with a group of people from different backgrounds.",
   },
   {
     title: "Global Ambassador",
