@@ -10,6 +10,7 @@ export interface EventCardProps {
   status: "CLOSED" | "REGISTRATION" | "COMING_SOON" | "LEADCOMP" | "LEADTALK";
   openLeadComp: () => void;
   openLeadTalk: () => void;
+  registerMainEvent: () => void;
 }
 export const EventCard: FC<EventCardProps> = (props) => {
   return (
@@ -47,12 +48,20 @@ const Content: FC<EventCardProps> = (props) => {
       );
     case "LEADTALK":
       return (
-        <div
-          onClick={props.openLeadTalk}
-          className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full bottom-0 left-0"
-        >
-          <h6 className="text-[#724182]">Learn More</h6>
-        </div>
+        <>
+          <div
+            onClick={props.openLeadTalk}
+            className="bg-[#FAEDF7] cursor-pointer py-2 md:py-4 mt-4 md:my-0 rounded-[48px] flex justify-center items-center w-full bottom-0 left-0"
+          >
+            <h6 className="text-[#724182]">Learn More</h6>
+          </div>
+          <div
+            onClick={props.registerMainEvent}
+            className="cursor-pointer py-2 md:py-4 ounded-[48px] flex justify-center items-center w-full bottom-0 left-0"
+          >
+            <h6 className="text-[#724182]">Register Here</h6>
+          </div>      
+        </>
       );
     default:
       return (

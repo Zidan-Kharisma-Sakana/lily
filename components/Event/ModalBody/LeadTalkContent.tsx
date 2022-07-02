@@ -27,7 +27,6 @@ export const LeadTalkContent: FC<{ openSuccess: () => void }> = ({
       if (res.ok) {
         openSuccess();
       } else {
-        console.log(await res.json());
         toast.error("Oops, please try again");
       }
     }

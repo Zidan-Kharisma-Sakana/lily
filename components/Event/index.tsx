@@ -5,6 +5,7 @@ import { EventCard, EventCardProps } from "./EventCard";
 export const Event: FC<{
   openLeadComp: () => void;
   openLeadTalk: () => void;
+  registerMainEvent: ()=> void;
 }> = (props) => {
   return (
     <>

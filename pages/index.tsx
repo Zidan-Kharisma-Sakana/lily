@@ -15,9 +15,11 @@ import { HomeModal } from "../components/Event/HomeModal";
 import { useRouter } from "next/router";
 import { OnboardingContentProps } from "../components/Event/ModalBody/OnboardingContent";
 import { useAuth } from "../context/auth";
-import {analytics} from "../utils/api";
+import { analytics, baseURLFE } from "../utils/api";
 
 import * as gtag from "../lib/ga";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 export enum HomeModalState {
   LEADCOMP = "LeadComp",
@@ -65,11 +67,31 @@ const Home: NextPage = () => {
     analytics(1).catch();
 
     gtag.event({
-        action: 'homepage_visit',
-        category: 'general',
-    })
+      action: "homepage_visit",
+      category: "general",
+    });
   }, [router]);
-
+  
+  const onRegistration = async () => {
+    const token = Cookies.get("token");
+    if (!token) {
+      router.push("/sign-in");
+    } else {
+      toast.loading("Registering...");
+      const res = await fetch(baseURLFE("api/event/1/apply/"), {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      toast.dismiss();
+      if (res.ok) {
+        openSuccess();
+      } else {
+        toast.error("Oops, please try again");
+      }
+    }
+  };
   return (
     <div>
       <Head>
@@ -88,7 +110,11 @@ const Home: NextPage = () => {
         <main className="py-8 px-4 sm:px-10 md:px-14 lg:px-28 xl:px-[121px] 2xl:px-[200px] xl:py-11 relative z-10">
           <About />
           <Banner />
-          <Event openLeadComp={openLeadComp} openLeadTalk={openLeadTalk} />
+          <Event
+            registerMainEvent={onRegistration}
+            openLeadComp={openLeadComp}
+            openLeadTalk={openLeadTalk}
+          />
           <SponsorPartner />
         </main>
       </div>
