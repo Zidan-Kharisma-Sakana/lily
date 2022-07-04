@@ -12,11 +12,13 @@ import { baseURLFE } from "../utils/api";
 
 const AuthContext = createContext<{
   isAuthenticated: boolean;
+  registered: boolean;
   user: any;
   login: (email: string, password: string) => Promise<any>;
   logout: () => Promise<any>;
 }>({
   isAuthenticated: false,
+  registered: false,
   user: null,
   login: async (email: string, password: string) => {},
   logout: async () => {},
@@ -26,7 +28,9 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState(null);
+  const [registered, setRegistered] = useState(false);
   const r = useRouter();
+
   const retrieveUser = async (token: string) => {
     const res = await fetch(baseURLFE("auth/users/me/"), {
       method: "GET",
@@ -46,14 +50,31 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get("token");
-      // console.log("-------");
-      console.log(token);
       if (token) {
         retrieveUser(token);
       }
     }
     loadUserFromCookies();
   }, []);
+
+  const getRegistered = async () => {
+    const token = Cookies.get("token");
+    const res = await fetch(baseURLFE("api/profile/event/"), {
+      headers: { Authorization: "Bearer " + token },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.length > 0) {
+        setRegistered(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (!!user) {
+      getRegistered();
+    }
+  }, [user]);
 
   const login = async (email: string, password: string) => {
     // ganti pake fetch aja
@@ -86,7 +107,7 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated: !!user, user, login, logout }}
+      value={{ isAuthenticated: !!user, user, login, logout, registered }}
     >
       {children}
     </AuthContext.Provider>

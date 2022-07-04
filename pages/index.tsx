@@ -32,7 +32,7 @@ export enum HomeModalState {
 const Home: NextPage = () => {
   const [open, setOpen] = useState<HomeModalState>(HomeModalState.NOSHOW);
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, registered } = useAuth();
   const [dataOnboard, setDataOnBoard] = useState<OnboardingContentProps>({
     email: "",
   });
@@ -73,6 +73,7 @@ const Home: NextPage = () => {
   }, [router]);
   
   const onRegistration = async () => {
+    if(registered) return
     const token = Cookies.get("token");
     if (!token) {
       router.push("/sign-in");
