@@ -9,9 +9,13 @@ import { EventContent } from "./LeadTalkMisc";
 export const LeadTalkContent: FC<{ openSuccess: () => void }> = ({
   openSuccess,
 }) => {
-  const { user } = useAuth();
+  const { registered } = useAuth();
   const router = useRouter();
   const onRegistration = async () => {
+    if(registered) {
+      toast.error("You are already registered")
+      return
+    }
     const token = Cookies.get("token");
     if (!token) {
       router.push("/sign-in");
