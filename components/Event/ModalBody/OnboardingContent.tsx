@@ -34,7 +34,6 @@ export const OnboardingContent: FC<{
     const msg = await res.json();
     toast.dismiss(t);
     if (res.ok) {
-      console.log(msg);
       toast.success("Success");
       setSaved();
     } else {

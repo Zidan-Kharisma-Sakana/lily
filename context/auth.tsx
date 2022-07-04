@@ -38,7 +38,6 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
     });
     const data = await res.json();
     if (res.ok) {
-      console.log(data);
       setUser(data);
     } else {
       toast.error(data.detail ?? "Unknown Error", {
@@ -89,7 +88,6 @@ export const AuthProvider: FC<{ children: React.ReactNode }> = ({
     toast.dismiss(t);
     const data = await res.json();
     if (res.ok) {
-      console.log(data);
       Cookies.set("token", data.access, { expires: 3 });
       retrieveUser(data.access);
     } else {

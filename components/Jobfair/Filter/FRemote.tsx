@@ -27,7 +27,6 @@ export const FRemote: FC = () => {
         remote_available: String(isRemote),
       };
     }
-    console.log(newQuery);
     router.push(
       {
         query: newQuery,

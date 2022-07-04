@@ -9,20 +9,16 @@ export default async function handler(
   if (req.method !== "POST") {
     res.status(405).json("Method not allowed");
   } else {
-    console.log(req.body);
-    console.log("---");
 
     try {
       const data = await patcher("auth/users/me/", req);
       const message = await data.json();
       if (data.ok) {
-        console.log(message);
         res.status(200).json({ message: "Success!" });
       } else {
         res.status(500).json({ message: message.detail ?? "unknown error" });
       }
     } catch (error) {
-      console.log(error);
       res.status(500).json({ message: error });
     }
   }

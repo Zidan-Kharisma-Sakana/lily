@@ -80,7 +80,6 @@ export function getFirstName(name: string) {
 
 export function getLastName(name: string) {
   return name.split(" ").reduce((acc, current, idx) => {
-    console.log(current, idx);
     if (idx != 1) return `${acc} ${current}`;
     else return current;
   });

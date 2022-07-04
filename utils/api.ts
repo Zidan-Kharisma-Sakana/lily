@@ -29,7 +29,6 @@ export const patcher = (
   req: NextApiRequest,
   ismulti?: boolean
 ): Promise<Response> => {
-  console.log("Auth: ", req.headers.authorization);
   return fetch(baseURL(url), {
     body: ismulti ? req.body : JSON.stringify(req.body),
     headers: {

@@ -19,7 +19,6 @@ export interface AppliedJobCardProps extends JobCardProps {
 
 export const AppliedCard: FC<AppliedJobCardProps> = (props) => {
   const applyTime = new Date(Date.parse(String(props.applyTime)));
-  console.log(props);
   return (
     <div
       onClick={() => window.open(`/jobfair/job/${props.id}`)}

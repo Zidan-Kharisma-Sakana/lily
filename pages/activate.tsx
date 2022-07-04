@@ -28,7 +28,6 @@ const ActivatePage: NextPage = () => {
           r.push("/sign-in");
         } else {
           const err = await res.json();
-          // console.log(err);
           setErr(err);
         }
       };

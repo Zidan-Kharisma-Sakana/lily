@@ -145,7 +145,6 @@ export const JobFairForm: FC<{
     if (res.ok) {
       toast.success("Success");
     } else {
-      console.log(data);
       for (var key in data) {
         if (Array.isArray(data[key])) {
           data[key].forEach((detail: string) => toast.error(detail));

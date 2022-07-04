@@ -35,11 +35,8 @@ export default async function handler(
     fs.writeFileSync(`./public/${cv.originalFilename}`, cvData);
     // coba simpan ke folder public
     const formData = new FormData();
-    console.log("1")
     formData.append("cv", cv);
-    console.log("2")
     formData.append("linkedin", "https://www.youtube.com/watch?v=cK7_rVZ6ivQ");
-    console.log(formData);
     try {
       const result = await fetch(baseURL("api/profile/jobfair/"), {
         body: formData as unknown as BodyInit,
@@ -50,18 +47,13 @@ export default async function handler(
       });
 
       if (result.ok) {
-        console.log("ok");
         const message = await result.json();
-        console.log(message);
         res.status(200).json({ message: "Success!" });
       } else {
-        console.log("not ok");
         const message = await result.json();
-        console.log(message);
         res.status(500).json({ message: message.detail ?? "unknown error" });
       }
     } catch (error) {
-      console.log(error);
       res.status(500).json({ message: error });
     }
   }

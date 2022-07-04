@@ -48,7 +48,6 @@ export const SignUpForm: FC = () => {
       );
       const data = await res.json();
       if (res.ok) {
-        console.log(res.headers);
         const url = data.authorization_url;
         setAuth_url(url);
       }

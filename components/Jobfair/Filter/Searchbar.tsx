@@ -28,7 +28,6 @@ export const Searchbar: FC = () => {
       />
       <input
         onKeyUp={(e) => {
-          console.log(e.key);
           if (e.key === "Enter") onSearch();
         }}
         type="text"
