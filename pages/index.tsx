@@ -73,7 +73,10 @@ const Home: NextPage = () => {
   }, [router]);
   
   const onRegistration = async () => {
-    if(registered) return
+    if(registered) {
+      toast.error("You are already registered")
+      return
+    }
     const token = Cookies.get("token");
     if (!token) {
       router.push("/sign-in");
